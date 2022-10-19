@@ -287,10 +287,10 @@ public class DAO {
         startConnection();
         try {
             Statement stx = conn.createStatement();
-            stx.executeUpdate("INSERT INTO utente (id_utente, id_corso, id_docente) VALUES ('" + prenotazione.getId_utente() + "', '" + prenotazione.getId_corso() + "', '" + prenotazione.getId_docente() + "')");
+            stx.executeUpdate("INSERT INTO utente (id_utente, id_corso, id_docente) VALUES ('" + prenotazione.getUtente().getId() + "', '" + prenotazione.getCorso().getId() + "', '" + prenotazione.getDocente().getId() + "')");
 
             // aggiorno l'ID dell'oggetto corso con quello generato dal DB
-            ResultSet result = stx.executeQuery("SELECT COUNT(*) AS numRows, id_prenotazione FROM prenotazione WHERE id_utente = '" + prenotazione.getId_utente() + "' AND id_corso = '" + prenotazione.getId_corso() + "' AND id_docente = '" + prenotazione.getId_docente() + "' ORDER BY id_corso ASC");
+            ResultSet result = stx.executeQuery("SELECT COUNT(*) AS numRows, id_prenotazione FROM prenotazione WHERE id_utente = '" + prenotazione.getUtente().getId() + "' AND id_corso = '" + prenotazione.getCorso().getId() + "' AND id_docente = '" + prenotazione.getDocente().getId() + "' ORDER BY id_corso ASC");
             int counter = 0, id = -1;
             while(result.next()) {
                 id = result.getInt("id_utente");
@@ -322,9 +322,14 @@ public class DAO {
         ArrayList<Prenotazione> list = new ArrayList<>();
         try {
             Statement stx = conn.createStatement();
-            ResultSet result = stx.executeQuery("SELECT * FROM prenotazione ORDER BY (data, ora) ASC");
+            ResultSet result = stx.executeQuery("SELECT * FROM prenotazione p JOIN utente u on (p.id_utente = u.id) JOIN corso c ON (p.id_corso = c.id) JOIN docente d ON (p.id_docente = d.id) ORDER BY (data, ora) ASC");
             while(result.next()) {
-                list.add(new Prenotazione(result.getInt("id_prenotazione"), result.getInt("id_utente"), result.getInt("id_corso"), result.getInt("id_docente"), result.getDate("data").toLocalDate(), result.getTime("ora").toLocalTime()));
+                list.add(new Prenotazione(result.getInt("p.id_prenotazione"),
+                        new Utente(result.getInt("u.id_utente"), result.getString("u.nome"), result.getString("u.cognome"), result.getString("u.password"), result.getString("u.ruolo")),
+                        new Corso(result.getInt("c.id_corso"), result.getString("c.titolo")),
+                        new Docente(result.getInt("d.id_docente"), result.getString("d.nome"), result.getString("d.cognome")),
+                        result.getDate("p.data").toLocalDate(),
+                        result.getTime("p.ora").toLocalTime()));
             }
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
