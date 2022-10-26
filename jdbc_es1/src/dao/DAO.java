@@ -38,7 +38,7 @@ public class DAO {
         }
     }
 
-    public static ResultSet query(String query) {
+    public static ResultSet executeQuery(String query) {
         startConnection();
         try {
             Statement stx = conn.createStatement();
