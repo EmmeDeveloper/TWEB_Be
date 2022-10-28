@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.*;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 
 public class DAO {
@@ -284,6 +285,18 @@ public class DAO {
 
     // -- PRENOTAZIONI --
     public static void insertPrenotazione(Prenotazione prenotazione) {
+        if(prenotazione.getData().getDayOfWeek() == DayOfWeek.SATURDAY || prenotazione.getData().getDayOfWeek() == DayOfWeek.SUNDAY) {
+            System.out.println("Impossibile prenotare nei weekend");
+            return;
+        }
+        if(prenotazione.getOra() < 15 || prenotazione.getOra() > 18) {
+            System.out.println("Impossibile prenotare nell'orario selezionato");
+            return;
+        }
+        if(!isAvailable(prenotazione)) {
+            System.out.println("È già presente una prenotazione con quei dati");
+            return;
+        }
         startConnection();
         try {
             Statement stx = conn.createStatement();
@@ -316,6 +329,21 @@ public class DAO {
         }
         endConnection();
     }
+
+    public static boolean isAvailable(Prenotazione prenotazione) {
+        boolean disponibile = false;
+        startConnection();
+        try {
+            Statement stx = conn.createStatement();
+            ResultSet result = stx.executeQuery("SELECT id_prenotazione FROM prenotazione WHERE id_docente = " + prenotazione.getDocente().getId() + " AND data = '" + prenotazione.getData() + "' AND ora_inizio = " + prenotazione.getOra());
+            disponibile = !result.next();
+            // se esistono già prenotazioni con docente e data e ora uguali allora result ha degli elementi
+        } catch (SQLException exc) {
+            System.out.println(exc.getMessage());
+        }
+        endConnection();
+        return disponibile;
+    } // dimmi se la prenotazione è ancora disponibile nel db
 
     public static ArrayList<Prenotazione> getPrenotazioni() {
         startConnection();
