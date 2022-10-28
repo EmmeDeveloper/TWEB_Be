@@ -10,10 +10,9 @@ public class Prenotazione {
 	private Utente utente;
 	private Corso corso;
 	private Docente docente;
-	private LocalDate data;
-	private LocalTime ora;
+	private String data, ora;
 
-	public Prenotazione(int id, Utente utente, Corso corso, Docente docente, LocalDate data, LocalTime ora) {
+	public Prenotazione(int id, Utente utente, Corso corso, Docente docente, String data, String ora) {
 		this.id = id;
 		this.utente = utente;
 		this.corso = corso;
@@ -22,7 +21,7 @@ public class Prenotazione {
 		this.ora = ora;
 	}
 
-	public Prenotazione(Utente utente, Corso corso, Docente docente, LocalDate data, LocalTime ora) {
+	public Prenotazione(Utente utente, Corso corso, Docente docente, String data, String ora) {
 		this.utente = utente;
 		this.corso = corso;
 		this.docente = docente;
@@ -62,19 +61,19 @@ public class Prenotazione {
 		this.docente = docente;
 	}
 
-	public LocalDate getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
-	public LocalTime getOra() {
+	public String getOra() {
 		return ora;
 	}
 
-	public void setOra(LocalTime ora) {
+	public void setOra(String ora) {
 		this.ora = ora;
 	}
 

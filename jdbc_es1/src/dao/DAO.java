@@ -328,8 +328,8 @@ public class DAO {
                         new Utente(result.getInt("u.id_utente"), result.getString("u.nome"), result.getString("u.cognome"), result.getString("u.password"), result.getString("u.ruolo")),
                         new Corso(result.getInt("c.id_corso"), result.getString("c.titolo")),
                         new Docente(result.getInt("d.id_docente"), result.getString("d.nome"), result.getString("d.cognome")),
-                        result.getDate("p.data").toLocalDate(),
-                        result.getTime("p.ora").toLocalTime()));
+                        result.getString("p.data"),
+                        result.getString("p.ora")));
             }
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
