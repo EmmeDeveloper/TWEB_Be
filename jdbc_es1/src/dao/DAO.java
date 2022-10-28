@@ -152,7 +152,7 @@ public class DAO {
         ArrayList<Docente> list = new ArrayList<>();
         try {
             Statement stx = conn.createStatement();
-            ResultSet result = stx.executeQuery("SELECT * FROM docente ORDER BY (cognome, nome) ASC");
+            ResultSet result = stx.executeQuery("SELECT * FROM docente ORDER BY cognome ASC, nome ASC");
             while(result.next()) {
                 list.add(new Docente(result.getInt("id_docente"), result.getString("nome"), result.getString("cognome")));
             }
@@ -214,7 +214,7 @@ public class DAO {
         ArrayList<Utente> list = new ArrayList<>();
         try {
             Statement stx = conn.createStatement();
-            ResultSet result = stx.executeQuery("SELECT * FROM utente ORDER BY (cognome, nome) ASC");
+            ResultSet result = stx.executeQuery("SELECT * FROM utente ORDER BY cognome ASC, nome ASC");
             while(result.next()) {
                 list.add(new Utente(result.getInt("id_utente"), result.getString("nome"), result.getString("cognome"), result.getString("password"), result.getString("ruolo")));
             }
