@@ -60,12 +60,12 @@ public class DAO {
 
             // aggiorno l'ID dell'oggetto corso con quello generato dal DB
             ResultSet result = stx.executeQuery("SELECT COUNT(*) AS numRows, id_corso FROM corso WHERE titolo = '" + corso.getTitolo() + "' ORDER BY id_corso ASC");
-            int counter = 0, id = -1;
+            int rows = 0, id = -1;
             while(result.next()) {
                 id = result.getInt("id_corso");
-                counter++;
+                rows++;
             }
-            if(counter > 1)     System.out.println("Ci sono " + counter + " corsi con gli stessi dati");
+            if(rows > 1)     System.out.println("Ci sono " + rows + " corsi con gli stessi dati");
             else if(id == -1)   System.out.println("Errore nell'aggiornamento dell'ID del corso");
             corso.setId(id);
             // posso aggiornare l'ID anche se ci sono più risultati perché sono ordinate in ASC e quella più recente avrà sempre il valore massimo
@@ -122,12 +122,12 @@ public class DAO {
 
             // aggiorno l'ID dell'oggetto docente con quello generato dal DB
             ResultSet result = stx.executeQuery("SELECT COUNT(*) AS numRows, id_docente FROM docente WHERE nome = '" + docente.getNome() + "' AND cognome = '" + docente.getCognome() + "' ORDER BY id_docente ASC");
-            int counter = 0, id = -1;
+            int rows = 0, id = -1;
             while(result.next()) {
                 id = result.getInt("id_docente");
-                counter++;
+                rows++;
             }
-            if(counter > 1)     System.out.println("Ci sono " + counter + " docenti con gli stessi dati");
+            if(rows > 1)     System.out.println("Ci sono " + rows + " docenti con gli stessi dati");
             else if(id == -1)   System.out.println("Errore nell'aggiornamento dell'ID del docente");
             docente.setId(id);
             // posso aggiornare l'ID anche se ci sono più risultati perché sono ordinate in ASC e quella più recente avrà sempre il valore massimo
@@ -183,13 +183,13 @@ public class DAO {
             stx.executeUpdate("INSERT INTO utente (nome, cognome, password, ruolo) VALUES ('" + utente.getNome() + "', '" + utente.getCognome() + "', '" + utente.getPassword() + "', '" + utente.getRuolo() + "')");
 
             // aggiorno l'ID dell'oggetto corso con quello generato dal DB
-            ResultSet result = stx.executeQuery("SELECT COUNT(*) AS numRows, id_utente FROM utente WHERE nome = '" + utente.getNome() + "' AND cognome = '" + utente.getCognome() + "' AND password = '" + utente.getPassword() + "' AND ruolo = '" + utente.getRuolo() + "' ORDER BY id_corso ASC");
+            ResultSet rows = stx.executeQuery("SELECT COUNT(*) AS numRows, id_utente FROM utente WHERE nome = '" + utente.getNome() + "' AND cognome = '" + utente.getCognome() + "' AND password = '" + utente.getPassword() + "' AND ruolo = '" + utente.getRuolo() + "' ORDER BY id_corso ASC");
             int counter = 0, id = -1;
-            while(result.next()) {
-                id = result.getInt("id_utente");
+            while(rows.next()) {
+                id = rows.getInt("id_utente");
                 counter++;
             }
-            if(counter > 1)     System.out.println("Ci sono " + counter + " utenti con gli stessi dati");
+            if(counter > 1)     System.out.println("Ci sono " + rows + " utenti con gli stessi dati");
             else if(id == -1)   System.out.println("Errore nell'aggiornamento dell'ID dell'utente");
             utente.setId(id);
             // posso aggiornare l'ID anche se ci sono più risultati perché sono ordinate in ASC e quella più recente avrà sempre il valore massimo
@@ -300,16 +300,16 @@ public class DAO {
         startConnection();
         try {
             Statement stx = conn.createStatement();
-            stx.executeUpdate("INSERT INTO utente (id_utente, id_corso, id_docente) VALUES ('" + prenotazione.getUtente().getId() + "', '" + prenotazione.getCorso().getId() + "', '" + prenotazione.getDocente().getId() + "')");
+            stx.executeUpdate("INSERT INTO utente (id_utente, id_corso, id_docente, data, ora_inizio) VALUES ('" + prenotazione.getUtente().getId() + "', '" + prenotazione.getCorso().getId() + "', '" + prenotazione.getDocente().getId() + "', '" + prenotazione.getData() + "', '" + prenotazione.getOra() + "')");
 
             // aggiorno l'ID dell'oggetto corso con quello generato dal DB
-            ResultSet result = stx.executeQuery("SELECT COUNT(*) AS numRows, id_prenotazione FROM prenotazione WHERE id_utente = '" + prenotazione.getUtente().getId() + "' AND id_corso = '" + prenotazione.getCorso().getId() + "' AND id_docente = '" + prenotazione.getDocente().getId() + "' ORDER BY id_corso ASC");
-            int counter = 0, id = -1;
+            ResultSet result = stx.executeQuery("SELECT id_prenotazione FROM prenotazione WHERE id_utente = '" + prenotazione.getUtente().getId() + "' AND id_corso = '" + prenotazione.getCorso().getId() + "' AND id_docente = '" + prenotazione.getDocente().getId() + "' AND data = '" + prenotazione.getData() + "' AND ora_inizio = '" + prenotazione.getOra() + "' ORDER BY id_corso ASC");
+            int rows = 0, id = -1;
             while(result.next()) {
                 id = result.getInt("id_utente");
-                counter++;
+                rows++;
             }
-            if(counter > 1)     System.out.println("Ci sono " + counter + " utenti con gli stessi dati");
+            if(rows > 1)        System.out.println("Ci sono " + rows + " utenti con gli stessi dati");
             else if(id == -1)   System.out.println("Errore nell'aggiornamento dell'ID dell'utente");
             prenotazione.setId(id);
             // posso aggiornare l'ID anche se ci sono più risultati perché sono ordinate in ASC e quella più recente avrà sempre il valore massimo
