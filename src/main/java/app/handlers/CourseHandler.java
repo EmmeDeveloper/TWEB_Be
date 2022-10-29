@@ -8,9 +8,23 @@ import java.util.UUID;
 public class CourseHandler implements ICourseHandler {
 
     private static DAOCourse _dao;
+    private static CourseHandler instance;
 
-    public CourseHandler() {
+    // Costruttore priavato in quanto instanza singleton
+    private CourseHandler() {
         _dao = new DAOCourse();
+    }
+
+    public CourseHandler getInstance() {
+        if (instance == null) {
+            // synchronized rende threadsafe la creazione dell'instanza
+            synchronized (CourseHandler.class) {
+                if (instance == null){
+                    instance = new CourseHandler();
+                }
+            }
+        }
+        return instance;
     }
 
     public Course AddCourse(String title) throws Exception {

@@ -60,18 +60,7 @@ public class DAOBase {
 
     public static ResultSet executeQuery(String query, Object... args) throws Exception {
         String _query = String.format(query.replace("?", "%s"), args);
-
-        // TODO: Creare eccezione corretta
-        if (!_connectionDone) throw new Exception("Cannot get connection: missing call to getConnection()?");
-        startConnection();
-        try {
-            Statement stx = _connection.createStatement();
-            return stx.executeQuery(query);
-        } catch (SQLException exc) {
-            System.out.println(exc.getMessage());
-        }
-        endConnection();
-        return null;
+        return executeQuery(_query);
     }
 
     public static int executeUpdateQuery(String query) throws Exception {
@@ -89,17 +78,7 @@ public class DAOBase {
 
     public static int executeUpdateQuery(String query, Object... args) throws Exception {
         String _query = String.format(query.replace("?", "%s"), args);
-
-        // TODO: Creare eccezione corretta
-        if (!_connectionDone) throw new Exception("Cannot get connection: missing call to getConnection()?");
-        startConnection();
-        try {
-            Statement stx = _connection.createStatement();
-            return stx.executeUpdate(_query);
-        } catch (SQLException exc) {
-            System.out.println(exc.getMessage());
-        }
-        return 0;
+        return executeUpdateQuery(_query);
     }
 
 }
