@@ -1,30 +1,32 @@
 package app.handlers;
 
+import app.dao.DAOBase;
 import app.dao.DAOCourse;
 import app.models.Course;
 
+import javax.servlet.ServletContext;
 import java.util.UUID;
 
 public class CourseHandler implements ICourseHandler {
 
+    private static final String HANDLER_KEY = "#courseHandler";
     private static DAOCourse _dao;
-    private static CourseHandler instance;
+    private static ServletContext _context;
+
 
     // Costruttore priavato in quanto instanza singleton
-    private CourseHandler() {
+    private CourseHandler() {}
+
+    public static void Init(ServletContext context) {
         _dao = new DAOCourse();
+        _context = context;
+        _context.setAttribute(HANDLER_KEY, new CourseHandler());
     }
 
-    public CourseHandler getInstance() {
-        if (instance == null) {
-            // synchronized rende threadsafe la creazione dell'instanza
-            synchronized (CourseHandler.class) {
-                if (instance == null){
-                    instance = new CourseHandler();
-                }
-            }
-        }
-        return instance;
+    public static CourseHandler getInstance() throws Exception {
+        if (_context == null)
+            throw new Exception("Context not provided, missing call to @Init method?");
+        return (CourseHandler) _context.getAttribute(HANDLER_KEY);
     }
 
     public Course AddCourse(String title) throws Exception {

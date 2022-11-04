@@ -9,15 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Implentata prima versione DAO, corso e handler">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/users/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" afterDir="false" />
+    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Aggiunto userHandler, implementata logica singleton">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/helpers/CryptoHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +200,10 @@
       <workItem from="1666897642432" duration="673000" />
       <workItem from="1666957732301" duration="84000" />
       <workItem from="1666958165379" duration="11029000" />
-      <workItem from="1667053893265" duration="3926000" />
+      <workItem from="1667053893265" duration="4009000" />
+      <workItem from="1667405114417" duration="4605000" />
+      <workItem from="1667481707393" duration="13549000" />
+      <workItem from="1667577396095" duration="5089000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -218,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666973117399</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Aggiunto userHandler, implementata logica singleton">
+      <created>1667057845812</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667057845812</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +254,7 @@
     <MESSAGE value="First setup commit" />
     <MESSAGE value="Merge conflict" />
     <MESSAGE value="Implentata prima versione DAO, corso e handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implentata prima versione DAO, corso e handler" />
+    <MESSAGE value="Aggiunto userHandler, implementata logica singleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto userHandler, implementata logica singleton" />
   </component>
 </project>

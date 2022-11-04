@@ -1,5 +1,10 @@
 package app.models.users;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NonNull;
+
+@Data
 public class User {
 
     // TODO: Implementare getter setter e bla bla bla
@@ -10,7 +15,7 @@ public class User {
     // di vedere nome cognome e cose simili, bisogna aggiungere queste info
     // Eventualmente può essere utile utile fare una classe UserMinimalInfo
 
-    private String Id;
-    private String Account; //
-    private String Role;
+    @NonNull private String Id;
+    private String Account; // email or password
+    @NonNull private String Role;
 }

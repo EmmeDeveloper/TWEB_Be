@@ -1,10 +1,6 @@
 package app.dao;
 
 import app.models.Course;
-
-import java.rmi.server.UID;
-import java.util.UUID;
-
 public class DAOCourse extends DAOBase {
 
     private static final String INSERT_COURSE_QUERY = "INSERT INTO corso (id_corso, titolo) VALUES ('?','?')";
@@ -14,7 +10,7 @@ public class DAOCourse extends DAOBase {
     }
 
     ///
-    /// Returns inserted course
+    /// Returns if course was insert correctly
     ///
     public boolean insertCourse(Course course) throws Exception {
         // MM-NOTA: Usiamo un guid al posto degli id e mettiamo sul db PK sul nome corso,
