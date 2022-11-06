@@ -12,7 +12,7 @@ public class DAOCourse extends DAOBase {
     ///
     /// Returns if course was insert correctly
     ///
-    public boolean insertCourse(Course course) throws Exception {
+    public boolean InsertCourse(Course course) throws Exception {
         // MM-NOTA: Usiamo un guid al posto degli id e mettiamo sul db PK sul nome corso,
         // risparmiamo query e controlli facendo fare il tutto al db
         int addRows = super.executeUpdateQuery(

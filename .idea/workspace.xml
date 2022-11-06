@@ -10,19 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Aggiunto userHandler, implementata logica singleton">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/helpers/CryptoHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/helpers/ResponseHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/ErrorMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/users/LoginResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,6 +205,9 @@
       <workItem from="1667405114417" duration="4605000" />
       <workItem from="1667481707393" duration="13549000" />
       <workItem from="1667577396095" duration="5089000" />
+      <workItem from="1667659567596" duration="4250000" />
+      <workItem from="1667669371789" duration="607000" />
+      <workItem from="1667672709557" duration="8686000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>

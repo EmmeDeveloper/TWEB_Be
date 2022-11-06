@@ -1,6 +1,5 @@
 package app.handlers;
 
-import app.dao.DAOBase;
 import app.dao.DAOCourse;
 import app.models.Course;
 
@@ -36,7 +35,7 @@ public class CourseHandler implements ICourseHandler {
                 title
         );
 
-        if (_dao.insertCourse(c)) {
+        if (_dao.InsertCourse(c)) {
             return c;
         }
         // TODO: Creare eccezione corretta
