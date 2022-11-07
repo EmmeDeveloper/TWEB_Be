@@ -1,7 +1,5 @@
 package app.dao;
 
-import com.sun.org.apache.xpath.internal.Arg;
-
 import java.sql.*;
 
 public class DAOBase {
@@ -10,7 +8,6 @@ public class DAOBase {
         registerDriver();
     }
     private static Connection _connection;
-    private static boolean _connectionDone = false;
     private static final String url = "jdbc:mysql://localhost:3306/ripetizioni";
 
     private static void registerDriver() {
@@ -45,8 +42,6 @@ public class DAOBase {
     }
 
     public static ResultSet executeQuery(String query) throws Exception {
-        // TODO: Creare eccezione corretta
-        if (!_connectionDone) throw new Exception("Cannot get connection: missing call to getConnection()?");
         startConnection();
         try {
             Statement stx = _connection.createStatement();
@@ -64,8 +59,6 @@ public class DAOBase {
     }
 
     public static int executeUpdateQuery(String query) throws Exception {
-        // TODO: Creare eccezione corretta
-        if (!_connectionDone) throw new Exception("Cannot get connection: missing call to getConnection()?");
         startConnection();
         try {
             Statement stx = _connection.createStatement();
@@ -73,6 +66,7 @@ public class DAOBase {
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
         }
+        endConnection();
         return 0;
     }
 

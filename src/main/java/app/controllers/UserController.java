@@ -1,10 +1,16 @@
 package app.controllers;
 
+import app.exceptions.CannotAddUserExcpetion;
+import app.exceptions.NotAuthorizedException;
+import app.exceptions.UserNotFoundException;
 import app.handlers.UserHandler;
 import app.helpers.JsonHelper;
 import app.helpers.ResponseHelper;
+import app.models.users.AddUserRequest;
 import app.models.users.LoginRequest;
 import app.models.users.LoginResponse;
+import app.models.users.User;
+import javafx.util.Pair;
 import lombok.var;
 
 import javax.servlet.ServletException;
@@ -13,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "UserController", value = {"/login", "/signup", "/logout"})
 public class UserController extends HttpServlet {
@@ -23,41 +28,52 @@ public class UserController extends HttpServlet {
             var userHandler = UserHandler.getInstance();
             String path = req.getServletPath() != null ? req.getServletPath() : "";
 
+            Pair<Boolean, String> valid;
+            User user;
+
             switch (path) {
                 case "/login":
                     LoginRequest request = JsonHelper.FromJsonRequest(req, LoginRequest.class);
-                    if (request.Account == null || request.Account.isEmpty()) {
-                        ResponseHelper.ReturnErrorStatus(resp, 401, "Account cannot be null or empty");
-                        return;
-                    }
-                    if (request.Password == null || request.Password.isEmpty()) {
-                        ResponseHelper.ReturnErrorStatus(resp, 401, "Password cannot be null or empty");
-                        return;
-                    }
-                    var user = userHandler.Login(request, req.getSession());
-                    if (user != null) {
-                        var logResp = new LoginResponse(user);
-                        ResponseHelper.ReturnOk(resp, logResp);
+                    valid = request.IsValid();
+                    if (!valid.getKey()) {
+                        ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());
                         return;
                     }
 
-
-
-                    ResponseHelper.ReturnErrorStatus(resp, 404, "Non esiste il tuo cazzo di nome nel db");
-                    break;
+                    user = userHandler.Login(request, req.getSession());
+                    ResponseHelper.ReturnOk(resp, new LoginResponse(user));
 
                 case "/signup":
+                    AddUserRequest signReq = JsonHelper.FromJsonRequest(req, AddUserRequest.class);
+                    valid = signReq.IsValid();
+                    if (!valid.getKey()) {
+                        ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());
+                        return;
+                    }
+                    user = userHandler.AddUser(signReq, req.getSession());
+                    ResponseHelper.ReturnOk(resp, new LoginResponse(user));
                     break;
 
                 case "/logout":
-                    break;
-
-                default:
-                    return; // TODO: Return 404
+                    userHandler.Logout(req.getSession());
+                    resp.setContentType("text/json");
+                    resp.setStatus(200);
             }
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }
+        catch (NotAuthorizedException e) {
+            ResponseHelper.ReturnErrorStatus(resp, 401, e.getMessage());
+        }
+        catch (UserNotFoundException e) {
+            ResponseHelper.ReturnErrorStatus(resp, 404, e.getMessage());
+        }
+        catch (CannotAddUserExcpetion e) {
+            e.printStackTrace();
+            ResponseHelper.ReturnErrorStatus(resp, 409, e.getMessage());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            ResponseHelper.ReturnErrorStatus(resp, 500, e.getMessage());
         }
     }
 }

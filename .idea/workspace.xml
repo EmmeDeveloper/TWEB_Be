@@ -9,21 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Aggiunto userHandler, implementata logica singleton">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/helpers/ResponseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/ErrorMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/users/LoginResponse.java" afterDir="false" />
+    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Aggiunti permessi, implementata bozza di login, fatte tante altre cose che non ricordo">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/CannotAddUserExcpetion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/NotAuthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/UserNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MockController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +208,8 @@
       <workItem from="1667577396095" duration="5089000" />
       <workItem from="1667659567596" duration="4250000" />
       <workItem from="1667669371789" duration="607000" />
-      <workItem from="1667672709557" duration="8686000" />
+      <workItem from="1667672709557" duration="14465000" />
+      <workItem from="1667817386753" duration="5997000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -237,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667057845812</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Aggiunti permessi, implementata bozza di login, fatte tante altre cose che non ricordo">
+      <created>1667739626100</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667739626100</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +268,7 @@
     <MESSAGE value="Merge conflict" />
     <MESSAGE value="Implentata prima versione DAO, corso e handler" />
     <MESSAGE value="Aggiunto userHandler, implementata logica singleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto userHandler, implementata logica singleton" />
+    <MESSAGE value="Aggiunti permessi, implementata bozza di login, fatte tante altre cose che non ricordo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunti permessi, implementata bozza di login, fatte tante altre cose che non ricordo" />
   </component>
 </project>

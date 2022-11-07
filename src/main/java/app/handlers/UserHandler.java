@@ -1,6 +1,9 @@
 package app.handlers;
 
 import app.dao.DAOUser;
+import app.exceptions.CannotAddUserExcpetion;
+import app.exceptions.NotAuthorizedException;
+import app.exceptions.UserNotFoundException;
 import app.helpers.CryptoHelper;
 import app.models.users.AddUserRequest;
 import app.models.users.LoginRequest;
@@ -41,28 +44,29 @@ public class UserHandler implements IUserHandler {
     public User AddUser(AddUserRequest request, HttpSession session) throws Exception {
 
         if (!IsAuthorized(SIGN_UP, session))
-            throw new Exception("User already logged in, require logout"); //  TODO: Eccezione fatta bene, 401 di risposta
+            throw new NotAuthorizedException("User already logged in, require logout");
 
-        var users = _dao.GetUserByAccountAndPassword(request.Username, request.Email);
+        var users = _dao.GetUserByAccountOrEmail(request.getUsername(), request.getEmail());
 
         if (!users.isEmpty()) {
-            if (users.stream().anyMatch(user -> user.getAccount().equals(request.Username)))
-                throw new Exception("User with same account already exists"); //  TODO: Eccezione fatta bene, 409 di risposta
+            if (users.stream().anyMatch(user -> user.getAccount().equals(request.getUsername())))
+                throw new CannotAddUserExcpetion("User with same account already exists");
             else
-                throw new Exception("User with same email already exists"); //  TODO: Eccezione fatta bene, 409 di risposta
+                throw new CannotAddUserExcpetion("User with same email already exists");
         }
 
-        var encPsw = CryptoHelper.encryptSHA2(request.Password);
+        var encPsw = CryptoHelper.encryptSHA2(request.getPassword());
         var id = UUID.randomUUID().toString();
         var result = _dao.InsertUser(
-                id, request.Username, request.Email, encPsw, request.Name, request.Surname, USER
+                id, request.getUsername(), request.getEmail(), encPsw, request.getName(), request.getSurname(), request.getRole()
         );
 
         if (!result)
-            // TODO: Creare eccezione corretta
             throw new Exception("Cannot insert user: Unhandled error");
 
-        var currUser = new User(id, USER);
+        var currUser = new User(id, request.getRole());
+        currUser.setAccount(request.getUsername());
+        currUser.setEmail(request.getEmail());
         session.setAttribute(USER_ATTRIBUTE, currUser);
         return currUser;
     }
@@ -70,20 +74,28 @@ public class UserHandler implements IUserHandler {
     public User Login(LoginRequest request, HttpSession session) throws Exception {
 
         if (!IsAuthorized(LOGIN, session))
-            throw new Exception("User already logged in, require logout"); //  TODO: Eccezione fatta bene, 401 di risposta
+            throw new NotAuthorizedException("User already logged in, require logout");
 
         var encPsw = CryptoHelper.encryptSHA2(request.Password);
-        var users = _dao.GetUserByAccountAndPassword(request.Account, encPsw);
+        var users = _dao.GetUserByAccountAndPassword(request.getAccount(), encPsw);
 
         if (users.isEmpty())
-            throw new Exception("User not found"); // TODO: Eccezione fatta bene, 404 di risposta
+            throw new UserNotFoundException("User not found");
 
         if (users.size() > 1)
-            throw new Exception("More than one user found"); // TODO: eccezione fatta bene, 500
+            throw new Exception("More than one user found");
 
         var currentUser = users.stream().findFirst().get();
         session.setAttribute(USER_ATTRIBUTE, currentUser);
         return currentUser;
+    }
+
+    @Override
+    public void Logout(HttpSession session) throws Exception {
+
+        if (session.getAttribute(USER_ATTRIBUTE) == null)
+            return;
+        session.removeAttribute(USER_ATTRIBUTE);
     }
 
     public boolean IsAuthorized(String feature, HttpSession session) {

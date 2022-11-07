@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class DAOUser extends DAOBase {
 
-    private static final String GET_USER_BY_PSW_AND_ACCOUNT_OR_EMAIL_QUERY = "SELECT * FROM users where (account = ? OR email = ? ) AND password = ?";
-    private static final String GET_USER_BY_ACCOUNT_OR_EMAIL_QUERY = "SELECT * FROM users where account = ? OR email = ? ";
+    private static final String GET_USER_BY_PSW_AND_ACCOUNT_OR_EMAIL_QUERY = "SELECT * FROM users where (account = '?' OR email = '?' ) AND password = '?'";
+    private static final String GET_USER_BY_ACCOUNT_OR_EMAIL_QUERY = "SELECT * FROM users where account = '?' OR email = '?' ";
 
-    private static final String GET_USER_BY_ID_QUERY = "SELECT * FROM users where ID = ?";
+    private static final String GET_USER_BY_ID_QUERY = "SELECT * FROM users where ID = '?'";
 
     private static final String INSERT_USER_QUERY = "INSERT INTO users (ID, account, email, password, name, surname, role) VALUES ('?','?','?','?','?','?','?')";
 
@@ -36,12 +36,13 @@ public class DAOUser extends DAOBase {
         var list = new ArrayList<User>();
         var result = super.executeQuery(query, args);
         while (result.next()) {
-            list.add(
-                    new User(
-                            result.getString("id"),
-                            result.getString("role")
-                    )
+            var u = new User(
+                    result.getString("ID"),
+                    result.getString("role")
             );
+            u.setAccount(result.getString("account"));
+            u.setEmail(result.getString("email"));
+            list.add(u);
         }
         return list;
     }

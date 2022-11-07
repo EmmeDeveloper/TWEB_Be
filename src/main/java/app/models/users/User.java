@@ -16,6 +16,7 @@ public class User {
     // Eventualmente può essere utile utile fare una classe UserMinimalInfo
 
     @NonNull private String Id;
-    private String Account; // email or password
+    private String Account = ""; // email or password
     @NonNull private String Role;
+    private String Email = "";
 }

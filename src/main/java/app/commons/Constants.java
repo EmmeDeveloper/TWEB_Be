@@ -22,8 +22,6 @@ public class Constants {
         public static final String REPETITIONS_GET_FOR_USER = "Repetitions#Getallforuser";
         public static final String REPETITIONS_GET_FOR_ALL_USERS = "Repetitions#Getforallusers";
 
-
-        public static final String GET_AVAILABLE_REPETITIONS = "Repetitions#Getall";
     }
 
     public class Roles {
