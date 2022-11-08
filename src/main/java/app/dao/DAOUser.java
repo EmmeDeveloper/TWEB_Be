@@ -1,6 +1,5 @@
 package app.dao;
 
-import app.models.Course;
 import app.models.users.User;
 import lombok.var;
 
@@ -35,15 +34,18 @@ public class DAOUser extends DAOBase {
     private ArrayList<User> GetUsers(String query, Object... args) throws Exception {
         var list = new ArrayList<User>();
         var result = super.executeQuery(query, args);
-        while (result.next()) {
-            var u = new User(
+        if (result != null) {
+            while (result.next()) {
+                var u = new User(
                     result.getString("ID"),
                     result.getString("role")
-            );
-            u.setAccount(result.getString("account"));
-            u.setEmail(result.getString("email"));
-            list.add(u);
+                );
+                u.setAccount(result.getString("account"));
+                u.setEmail(result.getString("email"));
+                list.add(u);
+            }
         }
+
         return list;
     }
 

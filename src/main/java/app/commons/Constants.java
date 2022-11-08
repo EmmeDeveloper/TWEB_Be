@@ -4,6 +4,8 @@ public class Constants {
 
     public class Features {
         public static final String COURSE_ADD = "Course#Add";
+        public static final String COURSE_DELETE = "Course#Delete";
+        public static final String COURSE_UPDATE = "Course#Update";
         public static final String COURSE_GET_PROFESSORS = "Course#Getprofessors";
         public static final String COURSE_GET_ALL = "Course#Getall";
 

@@ -1,5 +1,7 @@
 package app.dao;
 
+import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetProvider;
 import java.sql.*;
 
 public class DAOBase {
@@ -41,19 +43,26 @@ public class DAOBase {
         }
     }
 
-    public static ResultSet executeQuery(String query) throws Exception {
+    public static CachedRowSet executeQuery(String query) throws Exception {
         startConnection();
-        try {
-            Statement stx = _connection.createStatement();
-            return stx.executeQuery(query);
+        try (
+                Statement stmt = _connection.createStatement();
+                ResultSet rs = stmt.executeQuery( query );
+        )
+        {
+            CachedRowSet crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate( rs );
+            return crs;
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
+        } finally {
+            endConnection();
         }
-        endConnection();
         return null;
     }
 
-    public static ResultSet executeQuery(String query, Object... args) throws Exception {
+
+    public static CachedRowSet executeQuery(String query, Object... args) throws Exception {
         String _query = String.format(query.replace("?", "%s"), args);
         return executeQuery(_query);
     }
@@ -65,8 +74,9 @@ public class DAOBase {
             return stx.executeUpdate(query);
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
+        } finally {
+            endConnection();
         }
-        endConnection();
         return 0;
     }
 

@@ -1,7 +1,7 @@
 package app.handlers;
 
 import app.dao.DAOUser;
-import app.exceptions.CannotAddUserExcpetion;
+import app.exceptions.UserAlreadyExistsException;
 import app.exceptions.NotAuthorizedException;
 import app.exceptions.UserNotFoundException;
 import app.helpers.CryptoHelper;
@@ -50,9 +50,9 @@ public class UserHandler implements IUserHandler {
 
         if (!users.isEmpty()) {
             if (users.stream().anyMatch(user -> user.getAccount().equals(request.getUsername())))
-                throw new CannotAddUserExcpetion("User with same account already exists");
+                throw new UserAlreadyExistsException("User with same account already exists");
             else
-                throw new CannotAddUserExcpetion("User with same email already exists");
+                throw new UserAlreadyExistsException("User with same email already exists");
         }
 
         var encPsw = CryptoHelper.encryptSHA2(request.getPassword());
@@ -135,6 +135,8 @@ public class UserHandler implements IUserHandler {
 
         /// ** Course **
         map.put(COURSE_ADD, new String[] {ADMIN});
+        map.put(COURSE_DELETE, new String[] {ADMIN});
+        map.put(COURSE_UPDATE, new String[] {ADMIN});
         map.put(COURSE_GET_PROFESSORS, new String[] {GUEST, USER, ADMIN});
         map.put(COURSE_GET_ALL, new String[] {GUEST, USER, ADMIN});
 

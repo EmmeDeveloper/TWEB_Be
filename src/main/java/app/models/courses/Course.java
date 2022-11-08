@@ -1,4 +1,4 @@
-package app.models;
+package app.models.courses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

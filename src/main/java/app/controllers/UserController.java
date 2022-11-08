@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.exceptions.CannotAddUserExcpetion;
+import app.exceptions.UserAlreadyExistsException;
 import app.exceptions.NotAuthorizedException;
 import app.exceptions.UserNotFoundException;
 import app.handlers.UserHandler;
@@ -56,7 +56,6 @@ public class UserController extends HttpServlet {
 
                 case "/logout":
                     userHandler.Logout(req.getSession());
-                    resp.setContentType("text/json");
                     resp.setStatus(200);
             }
 
@@ -67,7 +66,7 @@ public class UserController extends HttpServlet {
         catch (UserNotFoundException e) {
             ResponseHelper.ReturnErrorStatus(resp, 404, e.getMessage());
         }
-        catch (CannotAddUserExcpetion e) {
+        catch (UserAlreadyExistsException e) {
             e.printStackTrace();
             ResponseHelper.ReturnErrorStatus(resp, 409, e.getMessage());
         }
