@@ -42,6 +42,7 @@ public class UserController extends HttpServlet {
 
                     user = userHandler.Login(request, req.getSession());
                     ResponseHelper.ReturnOk(resp, new LoginResponse(user));
+                    break;
 
                 case "/signup":
                     AddUserRequest signReq = JsonHelper.FromJsonRequest(req, AddUserRequest.class);
@@ -57,6 +58,7 @@ public class UserController extends HttpServlet {
                 case "/logout":
                     userHandler.Logout(req.getSession());
                     resp.setStatus(200);
+                    break;
             }
 
         }

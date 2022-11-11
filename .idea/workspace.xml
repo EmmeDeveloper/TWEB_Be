@@ -10,25 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Terminato login">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/CourseAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/CourseNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/courses/AddCourseRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/courses/AddCourseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/courses/EditCourseRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/courses/GetAllCoursesResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/ITeachingHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/Professor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/exceptions/CannotAddUserExcpetion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/exceptions/UserAlreadyExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ICourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/ICourseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/courses/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/ResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/ResponseHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +211,9 @@
       <workItem from="1667672709557" duration="14465000" />
       <workItem from="1667817386753" duration="22850000" />
       <workItem from="1667904715166" duration="1217000" />
+      <workItem from="1668086981730" duration="1790000" />
+      <workItem from="1668101784444" duration="6304000" />
+      <workItem from="1668158033560" duration="588000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>

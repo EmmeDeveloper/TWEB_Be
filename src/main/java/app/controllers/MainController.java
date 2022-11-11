@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.handlers.CourseHandler;
+import app.handlers.TeachingHandler;
 import app.handlers.UserHandler;
 
 import javax.servlet.ServletConfig;
@@ -15,5 +16,6 @@ public class MainController extends HttpServlet {
             super.init(config);
             CourseHandler.Init(getServletContext());
             UserHandler.Init(getServletContext());
+            TeachingHandler.Init(getServletContext());
         }
 }

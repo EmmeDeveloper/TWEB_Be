@@ -4,10 +4,13 @@ import app.exceptions.CourseAlreadyExistsException;
 import app.exceptions.CourseNotFoundException;
 import app.exceptions.NotAuthorizedException;
 import app.handlers.CourseHandler;
+import app.handlers.TeachingHandler;
 import app.handlers.UserHandler;
 import app.helpers.JsonHelper;
 import app.helpers.ResponseHelper;
 import app.models.courses.*;
+import app.models.professors.GetProfessorsByCourseIDsRequest;
+import app.models.professors.GetProfessorsByCourseIDsResponse;
 import app.models.users.LoginRequest;
 import app.models.users.LoginResponse;
 import lombok.var;
@@ -21,13 +24,14 @@ import java.io.IOException;
 
 import static app.commons.Constants.Features.*;
 
-@WebServlet(name = "CourseController", value = {"/courses/*"})
+@WebServlet(name = "CourseController", value = {"/courses", "/courses/professors"})
 public class CourseController extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!processRequest(req, resp)) return;
 
         var courseHandler = CourseHandler.getInstance();
+        var teachingHandler = TeachingHandler.getInstance();
         String path = req.getServletPath() != null ? req.getServletPath() : "";
         switch (path) {
             case "/courses":
@@ -38,7 +42,23 @@ public class CourseController extends HttpServlet {
                     e.printStackTrace();
                     ResponseHelper.ReturnErrorStatus(resp, 500, e.getMessage());
                 }
+                break;
 
+            case "/courses/professors":
+                GetProfessorsByCourseIDsRequest request = JsonHelper.FromJsonRequest(req, GetProfessorsByCourseIDsRequest.class);
+                var valid = request.IsValid();
+                if (!valid.getKey()) {
+                    ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());
+                    return;
+                }
+
+                try {
+                    var professors = teachingHandler.GetProfessorsByCourseIDS(request.getCourseIDs());
+                    ResponseHelper.ReturnOk(resp, new GetProfessorsByCourseIDsResponse(professors));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ResponseHelper.ReturnErrorStatus(resp, 500, e.getMessage());
+                }
                 break;
         }
     }
@@ -104,6 +124,11 @@ public class CourseController extends HttpServlet {
                             break;
                     }
                     if (!userHandler.IsAuthorized(feature, req.getSession()))
+                        throw new NotAuthorizedException("Not authorized");
+                    break;
+
+                case "/courses/professors":
+                    if (!userHandler.IsAuthorized(COURSE_GET_PROFESSORS, req.getSession()))
                         throw new NotAuthorizedException("Not authorized");
                     break;
             }

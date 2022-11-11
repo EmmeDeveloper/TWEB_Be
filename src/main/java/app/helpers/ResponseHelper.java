@@ -21,7 +21,8 @@ public class ResponseHelper {
         response.setContentType("text/json");
         response.setStatus(200);
         PrintWriter out = response.getWriter();
-        out.println(JsonHelper.ToJson(valueResponse));
+        var resp = JsonHelper.ToJson(valueResponse);
+        out.println(resp);
     }
 
 }
