@@ -1,6 +1,10 @@
 # TWEB_be
 Backend of TWEB project
 
+TODO: 
+- Modificare Course e Professor aggiungendo il campo DELETED
+- Aggiungere tabella ripetizioni (con orario, ripe effettuata / cancellata ecc)
+
 # Query creazione DB
 ## Users
 CREATE TABLE users ( ID VARCHAR(42) PRIMARY KEY, account VARCHAR(255) NOT NULL UNIQUE, email VARCHAR(255) NOT NULL UNIQUE, password VARCHAR(255), name VARCHAR(255), surname VARCHAR(255), role VARCHAR(255) );
