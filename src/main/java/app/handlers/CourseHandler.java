@@ -61,7 +61,7 @@ public class CourseHandler implements ICourseHandler {
     }
 
     public void DeleteCourse(String ID) throws Exception {
-        var course = _dao.GetCourseByTitle(ID);
+        var course = _dao.GetCourseByID(ID);
         if (course == null) {
             throw new CourseNotFoundException("Course not found");
         }
