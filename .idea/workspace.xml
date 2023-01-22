@@ -9,22 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Terminato login">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/ITeachingHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/Professor.java" afterDir="false" />
+    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Aggiunto teaching handler e altra roba inutile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/ResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/ResponseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +62,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Unito/Terzo anno/Prog3/Jmail&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -213,7 +202,21 @@
       <workItem from="1667904715166" duration="1217000" />
       <workItem from="1668086981730" duration="1790000" />
       <workItem from="1668101784444" duration="6304000" />
-      <workItem from="1668158033560" duration="588000" />
+      <workItem from="1668158033560" duration="2801000" />
+      <workItem from="1668172894033" duration="52000" />
+      <workItem from="1668175951950" duration="868000" />
+      <workItem from="1668179916337" duration="24000" />
+      <workItem from="1668186179668" duration="573000" />
+      <workItem from="1668851551676" duration="25000" />
+      <workItem from="1668852897640" duration="258000" />
+      <workItem from="1669113546905" duration="63000" />
+      <workItem from="1669158834280" duration="72000" />
+      <workItem from="1670405589931" duration="253000" />
+      <workItem from="1670408118974" duration="2045000" />
+      <workItem from="1671127866915" duration="599000" />
+      <workItem from="1671130173454" duration="80000" />
+      <workItem from="1674213733684" duration="3227000" />
+      <workItem from="1674325755404" duration="3217000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -257,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667835612808</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Aggiunto teaching handler e altra roba inutile">
+      <created>1668159013848</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668159013848</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +291,7 @@
     <MESSAGE value="Aggiunto userHandler, implementata logica singleton" />
     <MESSAGE value="Aggiunti permessi, implementata bozza di login, fatte tante altre cose che non ricordo" />
     <MESSAGE value="Terminato login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terminato login" />
+    <MESSAGE value="Aggiunto teaching handler e altra roba inutile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto teaching handler e altra roba inutile" />
   </component>
 </project>
