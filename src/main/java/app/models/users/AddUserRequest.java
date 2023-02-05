@@ -48,7 +48,7 @@ public class AddUserRequest {
         if (!Email.matches(EMAIL_REGEX))
             return new Pair<>(false, "Invalid email provided");
 
-        if (!Role.equals(Constants.Roles.USER) &&!Role.equals(Constants.Roles.ADMIN))
+        if (!Role.equals(Constants.Roles.USER) && !Role.equals(Constants.Roles.ADMIN))
             return new Pair<>(false, "Invalid role provided");
 
         return new Pair<>(true, "");

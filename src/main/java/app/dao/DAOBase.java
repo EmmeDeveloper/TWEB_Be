@@ -15,7 +15,7 @@ public class DAOBase {
 
 
     public DAOBase() {}
-    private static Connection _connection;
+    private Connection _connection;
     private static final String url = "jdbc:mysql://localhost:3306/ripetizioni";
 
     private static void registerDriver() {
@@ -27,7 +27,7 @@ public class DAOBase {
         }
     }
 
-    private static void startConnection() {
+    private void startConnection() {
         try {
             _connection = DriverManager.getConnection(url, "root", "");
             if(_connection != null) {
@@ -38,7 +38,7 @@ public class DAOBase {
         }
     }
 
-    private static void endConnection() {
+    private void endConnection() {
         try {
             if(_connection != null) {
                 _connection.close();
@@ -49,7 +49,7 @@ public class DAOBase {
         }
     }
 
-    public static CachedRowSet executeQuery(String query, Object... args) throws IllegalArgumentException {
+    public CachedRowSet executeQuery(String query, Object... args) throws IllegalArgumentException {
         checkParametersCount(query, args);
         startConnection();
         try (PreparedStatement stmt = _connection.prepareStatement(query)) {
@@ -71,11 +71,11 @@ public class DAOBase {
     }
 
 
-    public static CachedRowSet executeQuery(String query) {
+    public CachedRowSet executeQuery(String query) {
         return executeQuery(query, new Object[]{});
     }
 
-    public static int executeUpdateQuery(String query, Object... args) {
+    public int executeUpdateQuery(String query, Object... args) {
         checkParametersCount(query, args);
         startConnection();
         try (PreparedStatement stmt = _connection.prepareStatement(query)) {
@@ -92,7 +92,7 @@ public class DAOBase {
         return 0;
     }
 
-    public static int executeUpdateQuery(String query) throws IllegalArgumentException {
+    public int executeUpdateQuery(String query) throws IllegalArgumentException {
         return executeUpdateQuery(query, new Object[]{});
     }
 

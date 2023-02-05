@@ -8,12 +8,12 @@ import java.util.List;
 
 public class DAOCourse extends DAOBase {
 
-    private static final String INSERT_COURSE_QUERY = "INSERT INTO courses (ID, title) VALUES ('?','?')";
-    private static final String GET_ALL_COURSES_QUERY = "SELECT * FROM courses ORDER BY title ASC";
-    private static final String GET_COURSE_BY_TITLE_QUERY = "SELECT * FROM courses WHERE title = '?' LIMIT 1";
-    private static final String GET_COURSE_BY_ID_QUERY = "SELECT * FROM courses WHERE ID = '?' LIMIT 1";
-    private static final String UPDATE_COURSE_TITLE_BY_ID_QUERY = "UPDATE courses SET title = '?' WHERE ID = '?'";
-    private static final String DELETE_COURSE_QUERY = "DELETE FROM courses WHERE ID = '?'";
+    private static final String INSERT_COURSE_QUERY = "INSERT INTO courses (ID, title) VALUES ('?','?') ON DUPLICATE KEY UPDATE deleted = FALSE;";
+    private static final String GET_ALL_COURSES_QUERY = "SELECT * FROM courses WHERE deleted = FALSE ORDER BY title ASC";
+    private static final String GET_COURSE_BY_TITLE_QUERY = "SELECT * FROM courses WHERE title = '?' AND deleted = FALSE LIMIT 1";
+    private static final String GET_COURSE_BY_ID_QUERY = "SELECT * FROM courses WHERE ID = '?' AND deleted = FALSE LIMIT 1";
+    private static final String UPDATE_COURSE_TITLE_BY_ID_QUERY = "UPDATE courses SET title = '?' WHERE ID = '?' AND deleted = FALSE";
+    private static final String DELETE_COURSE_QUERY = "UPDATE courses SET deleted = TRUE WHERE ID = '?'";
 
     public DAOCourse() {
         super();

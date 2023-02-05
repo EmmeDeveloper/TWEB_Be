@@ -9,11 +9,11 @@ import java.util.List;
 public class DAOProfessor extends DAOBase {
 
 	private static final String INSERT_PROFESSOR_QUERY = "INSERT INTO professors (ID, name, surname) VALUES ('?','?','?')";
-	private static final String GET_ALL_PROFESSORS_QUERY = "SELECT * FROM professors ORDER BY surname,name ASC";
-	private static final String GET_PROFESSORS_BY_TEXT_QUERY = "SELECT * FROM professors WHERE name LIKE '%?%' OR surname LIKE '%?%'";
-	private static final String GET_PROFESSORS_BY_FULL_NAME_QUERY = "SELECT * FROM professors WHERE name = '?' AND surname = '?'";
-	private static final String GET_PROFESSOR_BY_ID_QUERY = "SELECT * FROM professors WHERE ID = '?' LIMIT 1";
-	private static final String DELETE_PROFESSOR_QUERY = "DELETE FROM professors WHERE ID = '?'";
+	private static final String GET_ALL_PROFESSORS_QUERY = "SELECT * FROM professors WHERE deleted = FALSE ORDER BY surname,name ASC";
+	private static final String GET_PROFESSORS_BY_TEXT_QUERY = "SELECT * FROM professors WHERE (name LIKE '%?%' OR surname LIKE '%?%') AND deleted = FALSE";
+	private static final String GET_PROFESSORS_BY_FULL_NAME_QUERY = "SELECT * FROM professors WHERE name = '?' AND surname = '?' AND deleted = FALSE";
+	private static final String GET_PROFESSOR_BY_ID_QUERY = "SELECT * FROM professors WHERE ID = '?' AND deleted = FALSE LIMIT 1";
+	private static final String DELETE_PROFESSOR_QUERY = "UPDATE professors SET deleted = TRUE WHERE ID = '?'";
 
 	public DAOProfessor() {
 		super();

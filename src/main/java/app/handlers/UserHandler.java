@@ -17,6 +17,17 @@ import java.util.*;
 import static app.commons.Constants.Roles.*;
 import static app.commons.Constants.Features.*;
 
+interface IUserHandler {
+
+    User AddUser(AddUserRequest request, HttpSession session) throws Exception;
+    User Login(LoginRequest request, HttpSession session) throws Exception;
+    void Logout(HttpSession session) throws Exception;
+    boolean IsAuthorized(String feature, HttpSession session);
+    boolean IsAuthorized(String feature, User user);
+
+}
+
+
 public class UserHandler implements IUserHandler {
     private static final String USER_ATTRIBUTE  = "#user";
     private static final String HANDLER_KEY = "#userHandler";

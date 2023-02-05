@@ -14,6 +14,15 @@ import javax.servlet.ServletException;
 import java.util.List;
 import java.util.UUID;
 
+interface IProfessorHandler {
+	Professor AddProfessor(AddProfessorRequest request) throws Exception;
+
+	List<Professor> GetAllProfessors() throws Exception;
+
+	void DeleteProfessor(String ID) throws Exception;
+}
+
+
 public class ProfessorHandler implements IProfessorHandler {
 
 	private static final String HANDLER_KEY = "#professorHandler";
@@ -66,5 +75,10 @@ public class ProfessorHandler implements IProfessorHandler {
 		}
 		var res = _dao.DeleteProfessor(ID);
 		if (!res) throw new Exception("Cannot delete professor: Unhandled error ");
+
+		var teachHandler = TeachingHandler.getInstance();
+		teachHandler.DeleteTeachingsOfProfessor(ID);
+
+		// TODO: Set all repetitions of this professor to deleted with note
 	}
 }

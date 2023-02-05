@@ -9,10 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Aggiunto teaching handler e altra roba inutile">
+    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Modifica DB&#10;Aggiunta gestione deleted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ICourseHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IProfessorHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ITeachingHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ProfessorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/ProfessorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -67,7 +80,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -216,7 +229,9 @@
       <workItem from="1671127866915" duration="599000" />
       <workItem from="1671130173454" duration="80000" />
       <workItem from="1674213733684" duration="3227000" />
-      <workItem from="1674325755404" duration="3217000" />
+      <workItem from="1674325755404" duration="11590000" />
+      <workItem from="1675600447216" duration="4060000" />
+      <workItem from="1675604533196" duration="568000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -267,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668159013848</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Aggiunto controllo parametri, usato prepareStatement e fixato driver">
+      <created>1674380934393</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674380934393</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +314,7 @@
     <MESSAGE value="Aggiunti permessi, implementata bozza di login, fatte tante altre cose che non ricordo" />
     <MESSAGE value="Terminato login" />
     <MESSAGE value="Aggiunto teaching handler e altra roba inutile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto teaching handler e altra roba inutile" />
+    <MESSAGE value="Aggiunto controllo parametri, usato prepareStatement e fixato driver" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto controllo parametri, usato prepareStatement e fixato driver" />
   </component>
 </project>

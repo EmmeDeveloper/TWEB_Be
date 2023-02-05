@@ -1,15 +1,23 @@
 package app.handlers;
 
-import app.dao.DAOCourse;
 import app.dao.DAOTeaching;
 import app.models.professors.Professor;
+import lombok.var;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class TeachingHandler implements ITeachingHandler{
+interface ITeachingHandler {
+    Map<String,List<Professor>> GetProfessorsByCourseIDS(List<String> IDs) throws Exception;
+    void DeleteTeachingsOfProfessor(String professorID) throws Exception;
+    void DeleteTeachingsOfCourse(String courseID) throws Exception;
+}
+
+public class TeachingHandler implements ITeachingHandler {
 
     private static final String HANDLER_KEY = "#teachingHandler";
     private static DAOTeaching _dao;
@@ -32,10 +40,34 @@ public class TeachingHandler implements ITeachingHandler{
 
 
     @Override
-    public List<Professor> GetProfessorsByCourseIDS(List<String> IDs) throws Exception {
+    public Map<String,List<Professor>> GetProfessorsByCourseIDS(List<String> IDs) throws Exception {
         if (IDs == null || IDs.isEmpty())
-            return new ArrayList<>();
+            return null;
 
-        return _dao.GetProfessorsByCourses(IDs);
+        var pairs = _dao.GetProfessorsByCourses(IDs);
+        var map = new HashMap<String, List<Professor>>();
+
+        for (var pair : pairs) {
+            if (!map.containsKey(pair.getKey()))
+                map.put(pair.getKey(), new ArrayList<>());
+            map.get(pair.getKey()).add(pair.getValue());
+        }
+        return map;
     }
+
+    @Override
+    public void DeleteTeachingsOfProfessor(String professorID) throws Exception {
+        if (professorID == null || professorID.isEmpty())
+            return;
+        _dao.DeleteTeachingByProfessorID(professorID);
+    }
+
+    @Override
+    public void DeleteTeachingsOfCourse(String courseID) throws Exception {
+        if (courseID == null || courseID.isEmpty())
+            return;
+        _dao.DeleteTeachingByCourseID(courseID);
+    }
+
+
 }

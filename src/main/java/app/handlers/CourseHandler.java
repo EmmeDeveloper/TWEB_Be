@@ -14,6 +14,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+interface ICourseHandler {
+    Course AddCourse(AddCourseRequest request) throws Exception;
+
+    List<Course> GetAllCourses() throws Exception;
+
+    void DeleteCourse(String ID) throws Exception;
+    void UpdateCourse(EditCourseRequest request) throws Exception;
+}
+
 public class CourseHandler implements ICourseHandler {
 
     private static final String HANDLER_KEY = "#courseHandler";
@@ -67,6 +76,11 @@ public class CourseHandler implements ICourseHandler {
         }
         var res = _dao.DeleteCourse(ID);
         if (!res) throw new Exception("Cannot delete course: Unhandled error ");
+
+        var teachHandler = TeachingHandler.getInstance();
+        teachHandler.DeleteTeachingsOfCourse(ID);
+
+        // TODO: Delete all repetitions of this course
     }
 
     public void UpdateCourse(EditCourseRequest request) throws Exception {
