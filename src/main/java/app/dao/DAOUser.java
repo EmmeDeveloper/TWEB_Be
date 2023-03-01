@@ -4,14 +4,15 @@ import app.models.users.User;
 import lombok.var;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DAOUser extends DAOBase {
 
     private static final String GET_USER_BY_PSW_AND_ACCOUNT_OR_EMAIL_QUERY = "SELECT * FROM users where (account = '?' OR email = '?' ) AND password = '?'";
     private static final String GET_USER_BY_ACCOUNT_OR_EMAIL_QUERY = "SELECT * FROM users where account = '?' OR email = '?' ";
-
     private static final String GET_USER_BY_ID_QUERY = "SELECT * FROM users where ID = '?'";
-
+    private static final String GET_USERS_BY_IDS_QUERY = "SELECT * FROM users where ID IN (?)";
     private static final String INSERT_USER_QUERY = "INSERT INTO users (ID, account, email, password, name, surname, role) VALUES ('?','?','?','?','?','?','?')";
 
 
@@ -29,6 +30,16 @@ public class DAOUser extends DAOBase {
 
     public ArrayList<User> GetUserByID(String id) throws Exception {
         return GetUsers(GET_USER_BY_ID_QUERY, id);
+    }
+
+    public ArrayList<User> GetUsersByIDs(List<String> ids) throws Exception {
+        var formattedIds = ids
+                .stream()
+                .map(id -> "'" + id + "'")
+                .collect(Collectors.toList());
+        String IDs = "(" + String.join(",", ids) + ")";
+
+        return GetUsers(GET_USERS_BY_IDS_QUERY, IDs);
     }
 
     private ArrayList<User> GetUsers(String query, Object... args) throws Exception {

@@ -45,7 +45,8 @@ public class CourseController extends HttpServlet {
                 break;
 
             case "/courses/professors":
-                GetProfessorsByCourseIDsRequest request = JsonHelper.FromJsonRequest(req, GetProfessorsByCourseIDsRequest.class);
+                var courses = req.getParameter("ids");
+                var request = new GetProfessorsByCourseIDsRequest(courses);
                 var valid = request.IsValid();
                 if (!valid.getKey()) {
                     ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());

@@ -24,7 +24,8 @@ interface IUserHandler {
     void Logout(HttpSession session) throws Exception;
     boolean IsAuthorized(String feature, HttpSession session);
     boolean IsAuthorized(String feature, User user);
-
+    User GetCurrentUser(HttpSession session) throws Exception;
+    List<User> GetUsersByIDs(List<String> ids) throws Exception;
 }
 
 
@@ -115,7 +116,7 @@ public class UserHandler implements IUserHandler {
         if (session.getAttribute(USER_ATTRIBUTE) == null)
             return IsAuthorized(feature, GetDefaultUser());;
 
-        return IsAuthorized(feature, (User)session.getAttribute(USER_ATTRIBUTE));
+        return IsAuthorized(feature, GetCurrentUser(session));
     }
 
     public boolean IsAuthorized(String feature, User user) {
@@ -126,6 +127,18 @@ public class UserHandler implements IUserHandler {
         return Arrays.stream(roles).anyMatch(user.getRole()::equals);
 
         // TODO: Implementare il check dell'id utente?
+    }
+
+    public User GetCurrentUser(HttpSession session) {
+        return (User)session.getAttribute(USER_ATTRIBUTE);
+    }
+
+    @Override
+    public List<User> GetUsersByIDs(List<String> ids) throws Exception {
+        if (ids == null || ids.isEmpty())
+            return new ArrayList<>();
+
+        return _dao.GetUsersByIDs(ids);
     }
 
     private static HashMap<String, String[]> GetFeaturePermissionsMap() {

@@ -1,5 +1,6 @@
 package app.models.users;
 
+import app.commons.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
@@ -19,4 +20,8 @@ public class User {
     private String Account = ""; // email or password
     @NonNull private String Role;
     private String Email = "";
+
+    public boolean IsAdmin() {
+        return Role.equalsIgnoreCase(Constants.Roles.ADMIN);
+    }
 }

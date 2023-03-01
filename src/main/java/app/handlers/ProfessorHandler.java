@@ -11,6 +11,7 @@ import lombok.var;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,6 +21,8 @@ interface IProfessorHandler {
 	List<Professor> GetAllProfessors() throws Exception;
 
 	void DeleteProfessor(String ID) throws Exception;
+
+	List<Professor> GetProfessorsByIDs(List<String> ids) throws Exception;
 }
 
 
@@ -80,5 +83,12 @@ public class ProfessorHandler implements IProfessorHandler {
 		teachHandler.DeleteTeachingsOfProfessor(ID);
 
 		// TODO: Set all repetitions of this professor to deleted with note
+	}
+
+	@Override
+	public List<Professor> GetProfessorsByIDs(List<String> ids) throws Exception {
+		if (ids == null || ids.isEmpty())
+			return new ArrayList<>();
+		return _dao.GetProfessorsByIDs(ids);
 	}
 }

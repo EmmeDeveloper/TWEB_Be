@@ -9,23 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Modifica DB&#10;Aggiunta gestione deleted">
+    <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Modifica DB&#10;Aggiunta gestione deleted&#10;Spostate interfacce nelle classi&#10;Rimosso metodi statici dal base&#10;Pulizia codice">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAORepetition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/handlers/RepetitionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/repetitions/GetRepetitionsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/repetitions/Repetition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ICourseHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IProfessorHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ITeachingHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/IUserHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ProfessorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/ProfessorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetProfessorsByCourseIDsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -231,7 +228,9 @@
       <workItem from="1674213733684" duration="3227000" />
       <workItem from="1674325755404" duration="11590000" />
       <workItem from="1675600447216" duration="4060000" />
-      <workItem from="1675604533196" duration="568000" />
+      <workItem from="1675604533196" duration="3896000" />
+      <workItem from="1675712707770" duration="3988000" />
+      <workItem from="1677619452668" duration="6240000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -289,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674380934393</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Modifica DB&#10;Aggiunta gestione deleted&#10;Spostate interfacce nelle classi&#10;Rimosso metodi statici dal base&#10;Pulizia codice">
+      <created>1675605385738</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1675605385738</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +321,18 @@
     <MESSAGE value="Terminato login" />
     <MESSAGE value="Aggiunto teaching handler e altra roba inutile" />
     <MESSAGE value="Aggiunto controllo parametri, usato prepareStatement e fixato driver" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto controllo parametri, usato prepareStatement e fixato driver" />
+    <MESSAGE value="Modifica DB&#10;Aggiunta gestione deleted&#10;Spostate interfacce nelle classi&#10;Rimosso metodi statici dal base&#10;Pulizia codice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifica DB&#10;Aggiunta gestione deleted&#10;Spostate interfacce nelle classi&#10;Rimosso metodi statici dal base&#10;Pulizia codice" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
