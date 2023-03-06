@@ -1,20 +1,20 @@
 package app.handlers;
 
 import app.dao.DAOTeaching;
+import app.exceptions.CourseNotFoundException;
+import app.exceptions.ProfessorNotFoundException;
 import app.models.professors.Professor;
 import lombok.var;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 interface ITeachingHandler {
     Map<String,List<Professor>> GetProfessorsByCourseIDS(List<String> IDs) throws Exception;
     void DeleteTeachingsOfProfessor(String professorID) throws Exception;
     void DeleteTeachingsOfCourse(String courseID) throws Exception;
+    void AddTeaching(String professorID, String courseID) throws Exception;
 }
 
 public class TeachingHandler implements ITeachingHandler {
@@ -67,6 +67,23 @@ public class TeachingHandler implements ITeachingHandler {
         if (courseID == null || courseID.isEmpty())
             return;
         _dao.DeleteTeachingByCourseID(courseID);
+    }
+
+    @Override
+    public void AddTeaching(String professorID, String courseID) throws Exception {
+        if (professorID == null || professorID.isEmpty())
+            return;
+        if (courseID == null || courseID.isEmpty())
+            return;
+
+        var professor = ProfessorHandler.getInstance().GetProfessorsByIDs(new ArrayList<String>() {{ add(professorID); }});
+        if (professor == null || professor.isEmpty())
+            throw new ProfessorNotFoundException("Professor not found");
+        var course = CourseHandler.getInstance().GetCourseByID(courseID);
+        if (course == null)
+            throw new CourseNotFoundException("Course not found");
+
+        _dao.AddTeaching(UUID.randomUUID().toString(),professorID, courseID);
     }
 
 

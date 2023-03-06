@@ -13,7 +13,7 @@ public class DAOCourse extends DAOBase {
     private static final String GET_COURSE_BY_TITLE_QUERY = "SELECT * FROM courses WHERE title = '?' AND deleted = FALSE LIMIT 1";
     private static final String GET_COURSE_BY_ID_QUERY = "SELECT * FROM courses WHERE ID = '?' AND deleted = FALSE LIMIT 1";
     private static final String UPDATE_COURSE_TITLE_BY_ID_QUERY = "UPDATE courses SET title = '?' WHERE ID = '?' AND deleted = FALSE";
-    private static final String DELETE_COURSE_QUERY = "UPDATE courses SET deleted = TRUE WHERE ID = '?'";
+    private static final String SOFT_DELETE_COURSE_QUERY = "UPDATE courses SET deleted = TRUE WHERE ID = '?'";
 
     public DAOCourse() {
         super();
@@ -81,9 +81,9 @@ public class DAOCourse extends DAOBase {
         return editedRows > 0;
     }
 
-    public boolean DeleteCourse(String ID) throws Exception {
+    public boolean DeleteSoftCourse(String ID) throws Exception {
         int editedRows = super.executeUpdateQuery(
-                DELETE_COURSE_QUERY,ID
+                SOFT_DELETE_COURSE_QUERY,ID
         );
         return editedRows > 0;
     }

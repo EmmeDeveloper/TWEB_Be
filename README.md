@@ -15,7 +15,7 @@ CREATE TABLE professors (ID VARCHAR(42) PRIMARY KEY, name VARCHAR(255) NOT NULL,
 
 ## Teachings
 CREATE TABLE teachings (
-ID int NOT NULL AUTO_INCREMENT,
+ID VARCHAR(42) PRIMARY KEY,
 IDCourse VARCHAR(42) NOT NULL,
 IDProfessor VARCHAR(42) NOT NULL,
 PRIMARY KEY (ID),
@@ -25,7 +25,7 @@ FOREIGN KEY (IDProfessor) REFERENCES professors(ID) ON DELETE CASCADE
 
 ## Repetitions
 CREATE TABLE repetitions (
-ID int NOT NULL AUTO_INCREMENT,
+ID VARCHAR(42) PRIMARY KEY,
 IDCourse VARCHAR(42) NOT NULL,
 IDProfessor VARCHAR(42) NOT NULL,
 IDUser VARCHAR(42) NOT NULL,
@@ -66,12 +66,4 @@ VALUES
 ('8a8b2c3b-6a1c-4f9e-9d96-e547f9a6a8d8', 'Carlo', 'Neri'),
 ('8a8b2c4b-6a1c-4f9e-9d96-e547f9a6a8d8', 'Lucia', 'Verdi'),
 ('8a8b2c5b-6a1c-4f9e-9d96-e547f9a6a8d8', 'Matteo', 'Grigi');
-
-INSERT INTO teachings (IDCourse, IDProfessor)
-VALUES
-('8a8b1c5a-6a1c-4f9e-9d96-e547f9a6a8d8', '8a8b2c1b-6a1c-4f9e-9d96-e547f9a6a8d8'),
-('8a8b1c5a-6a1c-4f9e-9d96-e547f9a6a8d8', '8a8b2c2b-6a1c-4f9e-9d96-e547f9a6a8d8'),
-('8a8b2c5a-6a1c-4f9e-9d96-e547f9a6a8d8', '8a8b2c3b-6a1c-4f9e-9d96-e547f9a6a8d8'),
-('8a8b2c5a-6a1c-4f9e-9d96-e547f9a6a8d8', '8a8b2c4b-6a1c-4f9e-9d96-e547f9a6a8d8'),
-('8a8b3c5a-6a1c-4f9e-9d96-e547f9a6a8d8', '8a8b2c5b-6a1c-4f9e-9d96-e547f9a6a8d8');
 

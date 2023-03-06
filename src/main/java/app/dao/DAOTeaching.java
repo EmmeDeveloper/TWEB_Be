@@ -21,9 +21,8 @@ public class DAOTeaching extends DAOBase {
             "INNER JOIN professors ON teachings.IDProfessor = professors.ID\n" +
             "WHERE courses.ID IN ?";
     private static final String DELETE_TEACHING_BY_COURSE_ID_QUERY = "DELETE FROM teachings WHERE IDCourse = '?'";
-
     private static final String DELETE_TEACHING_BY_PROFESSOR_ID_QUERY = "DELETE FROM teachings WHERE IDProfessor = '?'";
-
+    private static final String ADD_TEACHING_QUERY = "INSERT INTO teachings (ID, IDCourse, IDProfessor) VALUES ('?','?', '?')";
     public DAOTeaching() {
         super();
     }
@@ -58,5 +57,9 @@ public class DAOTeaching extends DAOBase {
 
     public boolean DeleteTeachingByProfessorID(String professorID) throws Exception {
         return super.executeUpdateQuery(DELETE_TEACHING_BY_PROFESSOR_ID_QUERY, professorID) > 0;
+    }
+
+    public boolean AddTeaching(String ID, String courseID, String professorID) throws Exception {
+        return super.executeUpdateQuery(ADD_TEACHING_QUERY, ID, courseID, professorID) > 0;
     }
 }

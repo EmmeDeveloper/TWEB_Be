@@ -82,7 +82,8 @@ public class ProfessorHandler implements IProfessorHandler {
 		var teachHandler = TeachingHandler.getInstance();
 		teachHandler.DeleteTeachingsOfProfessor(ID);
 
-		// TODO: Set all repetitions of this professor to deleted with note
+		var repetitionHandler = RepetitionHandler.getInstance();
+		repetitionHandler.CancelRepetitionsOfProfessor(ID);
 	}
 
 	@Override

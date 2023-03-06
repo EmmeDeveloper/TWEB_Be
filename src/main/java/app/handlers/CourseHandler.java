@@ -10,7 +10,6 @@ import lombok.var;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +20,8 @@ interface ICourseHandler {
 
     void DeleteCourse(String ID) throws Exception;
     void UpdateCourse(EditCourseRequest request) throws Exception;
+
+    Course GetCourseByID(String ID) throws Exception;
 }
 
 public class CourseHandler implements ICourseHandler {
@@ -74,13 +75,14 @@ public class CourseHandler implements ICourseHandler {
         if (course == null) {
             throw new CourseNotFoundException("Course not found");
         }
-        var res = _dao.DeleteCourse(ID);
+        var res = _dao.DeleteSoftCourse(ID);
         if (!res) throw new Exception("Cannot delete course: Unhandled error ");
 
         var teachHandler = TeachingHandler.getInstance();
         teachHandler.DeleteTeachingsOfCourse(ID);
 
-        // TODO: Delete all repetitions of this course
+        var repetitionHandler = RepetitionHandler.getInstance();
+        repetitionHandler.CancelRepetitionsOfCourse(ID);
     }
 
     public void UpdateCourse(EditCourseRequest request) throws Exception {
@@ -90,6 +92,15 @@ public class CourseHandler implements ICourseHandler {
         }
         var res = _dao.UpdateCourse(request.getID(), request.getName());
         if (!res) throw new Exception("Cannot update course: Unhandled error ");
+    }
+
+    @Override
+    public Course GetCourseByID(String ID) throws Exception {
+        var course = _dao.GetCourseByID(ID);
+        if (course == null) {
+            throw new CourseNotFoundException("Course not found");
+        }
+        return course;
     }
 
 

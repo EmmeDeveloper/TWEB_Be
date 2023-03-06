@@ -31,4 +31,10 @@ public class Constants {
         public static final String USER = "User";
         public static final String ADMIN = "Admin";
     }
+
+    public class RepetitionStatus {
+        public static final String PENDING = "Pending";
+        public static final String DONE = "Done";
+        public static final String DELETED = "Deleted";
+    }
 }
