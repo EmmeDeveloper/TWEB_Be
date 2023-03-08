@@ -10,7 +10,6 @@ public class EditRepetitionRequest {
 
   public String ID;
   public String note;
-  public String status;
 
   public Pair<Boolean, String> IsValid() {
     if (ID == null || ID.isEmpty())

@@ -47,9 +47,9 @@ public class UserHandler implements IUserHandler {
         permissionMap = GetFeaturePermissionsMap();
     }
 
-    public static UserHandler getInstance() throws Exception {
+    public static UserHandler getInstance() {
         if (_context == null)
-            throw new Exception("Context not provided, missing call to @Init method?");
+            throw new RuntimeException("Context not provided, missing call to @Init method?");
         return (UserHandler) _context.getAttribute(HANDLER_KEY);
     }
 
@@ -152,8 +152,10 @@ public class UserHandler implements IUserHandler {
         /// ** Repetition **
         map.put(REPETITIONS_GET_AVAILABLE, new String[] {GUEST, USER, ADMIN } );
         map.put(REPETITIONS_RESERVE, new String[]{USER});
-        map.put(REPETITIONS_DELETE, new String[]{USER, ADMIN});
+        map.put(REPETITIONS_DELETE, new String[]{USER});
         map.put(REPETITIONS_SET_DONE, new String[]{USER});
+        map.put(REPETITIONS_SET_DELETED, new String[]{USER, ADMIN});
+        map.put(REPETITIONS_UPDATE_NOTES, new String[]{USER});
         map.put(REPETITIONS_GET_FOR_USER, new String[]{USER, ADMIN});
         map.put(REPETITIONS_GET_FOR_ALL_USERS, new String[]{ADMIN});
 

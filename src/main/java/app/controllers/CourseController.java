@@ -45,7 +45,7 @@ public class CourseController extends HttpServlet {
                 break;
 
             case "/courses/professors":
-                var courses = req.getParameter("ids");
+                var courses = req.getParameterValues("ids");
                 var request = new GetProfessorsByCourseIDsRequest(courses);
                 var valid = request.IsValid();
                 if (!valid.getKey()) {

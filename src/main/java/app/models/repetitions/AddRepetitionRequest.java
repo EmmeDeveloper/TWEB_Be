@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class AddRepetitionRequest {
-    private String IDUser;
+  private String IDUser;
   private String IDCourse;
   private String IDProfessor;
   private LocalDate date;

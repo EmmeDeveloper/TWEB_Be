@@ -25,4 +25,10 @@ public class ResponseHelper {
         out.println(resp);
     }
 
+    public static void ReturnOk(HttpServletResponse response) throws IOException {
+        response.setContentType("text/json");
+        response.setStatus(200);
+        PrintWriter out = response.getWriter();
+        out.println("");
+    }
 }

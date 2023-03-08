@@ -40,9 +40,9 @@ public class CourseHandler implements ICourseHandler {
         _context.setAttribute(HANDLER_KEY, new CourseHandler());
     }
 
-    public static CourseHandler getInstance() throws ServletException {
+    public static CourseHandler getInstance() {
         if (_context == null)
-            throw new ServletException("Context not provided, missing call to @Init method?");
+            throw new RuntimeException("Context not provided, missing call to @Init method?");
         return (CourseHandler) _context.getAttribute(HANDLER_KEY);
     }
 

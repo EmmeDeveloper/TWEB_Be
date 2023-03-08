@@ -4,6 +4,7 @@ import javafx.util.Pair;
 import lombok.Data;
 import lombok.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,9 +19,11 @@ public class GetProfessorsByCourseIDsRequest {
         return new Pair<>(true, "");
     }
 
-    public GetProfessorsByCourseIDsRequest(String ids) {
-        if (ids == null || ids.isEmpty())
+    public GetProfessorsByCourseIDsRequest(String[] ids) {
+        if (ids == null) {
+            courseIDs = new ArrayList<>();
             return;
-        courseIDs = Stream.of(ids.split(",")).collect(Collectors.toList());
+        }
+        courseIDs = Stream.of(ids).collect(Collectors.toList());
     }
 }

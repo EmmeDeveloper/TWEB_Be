@@ -6,6 +6,7 @@ import app.dao.DAOUser;
 import app.exceptions.CourseNotFoundException;
 import app.exceptions.ProfessorNotFoundException;
 import app.exceptions.UserNotFoundException;
+import app.models.courses.Course;
 import app.models.professors.Professor;
 import app.models.repetitions.AddRepetitionRequest;
 import app.models.repetitions.GetRepetitionsResponse;
@@ -15,6 +16,7 @@ import javafx.util.Pair;
 import lombok.var;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import java.rmi.server.UID;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,9 +26,10 @@ import java.util.stream.Collectors;
 interface IRepetitionHandler {
   GetRepetitionsResponse GetRepetitionsByCourseIds(User currentUser, List<String> courseIds, Date from, Date to) throws Exception;
   GetRepetitionsResponse GetAllRepetitionsByUser(String userId, Date from, Date to) throws Exception;
+  GetRepetitionsResponse GetRepetitionsForAllUsers(Date from, Date to) throws Exception;
   void CancelRepetitionsOfCourse(String courseId) throws Exception;
   void CancelRepetitionsOfProfessor(String professorId) throws Exception;
-  void AddRepetition(AddRepetitionRequest request) throws Exception;
+  Repetition AddRepetition(AddRepetitionRequest request) throws Exception;
   void UpdateRepetition(String id, String status, String note) throws Exception;
 
   void DeleteRepetition(String id) throws Exception;
@@ -156,6 +159,36 @@ public class RepetitionHandler implements IRepetitionHandler {
   }
 
   @Override
+  public GetRepetitionsResponse GetRepetitionsForAllUsers(Date from, Date to) throws Exception {
+    var courses = CourseHandler.getInstance().GetAllCourses();
+    var courseIds = courses.stream().map(Course::getId).collect(Collectors.toList());
+
+    var response = new GetRepetitionsResponse();
+    var list = _dao.GetRepetitionsByCourseIds(courseIds, from, to);
+
+    var professorIds = list.stream().map(Repetition::getIDProfessor).collect(Collectors.toList());
+    var professors = ProfessorHandler.getInstance().GetProfessorsByIDs(professorIds);
+    var professorMap = professors.stream().collect(Collectors.toMap(Professor::getID, p -> p));
+
+    var userIds = list.stream().map(Repetition::getIDUser).collect(Collectors.toList());
+    var users = UserHandler.getInstance().GetUsersByIDs(userIds);
+    var userMap = users.stream().collect(Collectors.toMap(User::getId, u -> u));
+
+    response.setRepetitions(
+            list
+                    .stream()
+                    .map(r -> GetFullRepetition(
+                            r,
+                            userMap.get(r.getIDUser()),
+                            professorMap.get(r.getIDProfessor()))
+                    )
+                    .collect(Collectors.toList())
+    );
+
+    return response;
+  }
+
+  @Override
   public void CancelRepetitionsOfCourse(String courseId) throws Exception {
     if (courseId == null || courseId.isEmpty())
       return;
@@ -170,7 +203,7 @@ public class RepetitionHandler implements IRepetitionHandler {
   }
 
   @Override
-  public void AddRepetition(AddRepetitionRequest request) throws Exception {
+  public Repetition AddRepetition(AddRepetitionRequest request) throws Exception {
     var user = UserHandler.getInstance().GetUsersByIDs(new ArrayList<String>() {{ add(request.getIDUser()); }});
     if (user == null || user.isEmpty())
       throw new UserNotFoundException("User not found");
@@ -196,6 +229,8 @@ public class RepetitionHandler implements IRepetitionHandler {
     var res = _dao.AddRepetition(repetition);
     if (!res)
       throw new Exception("Cannot add repetition: Unhandled error ");
+
+    return repetition;
   }
 
   @Override

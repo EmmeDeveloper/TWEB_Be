@@ -20,6 +20,8 @@ public class Constants {
         public static final String REPETITIONS_RESERVE = "Repetitions#Reserve";
         public static final String REPETITIONS_DELETE = "Repetitions#Delete";
         public static final String REPETITIONS_SET_DONE = "Repetitions#Setdone";
+        public static final String REPETITIONS_UPDATE_NOTES = "Repetitions#Updatenotes";
+        public static final String REPETITIONS_SET_DELETED = "Repetitions#Setdeleted";
 
         public static final String REPETITIONS_GET_FOR_USER = "Repetitions#Getallforuser";
         public static final String REPETITIONS_GET_FOR_ALL_USERS = "Repetitions#Getforallusers";
@@ -33,8 +35,8 @@ public class Constants {
     }
 
     public class RepetitionStatus {
-        public static final String PENDING = "Pending";
-        public static final String DONE = "Done";
-        public static final String DELETED = "Deleted";
+        public static final String PENDING = "pending";
+        public static final String DONE = "done";
+        public static final String DELETED = "deleted";
     }
 }

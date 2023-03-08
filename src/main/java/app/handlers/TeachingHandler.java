@@ -31,9 +31,9 @@ public class TeachingHandler implements ITeachingHandler {
         _context.setAttribute(HANDLER_KEY, new TeachingHandler());
     }
 
-    public static TeachingHandler getInstance() throws ServletException {
+    public static TeachingHandler getInstance() {
         if (_context == null)
-            throw new ServletException("Context not provided, missing call to @Init method?");
+            throw new RuntimeException("Context not provided, missing call to @Init method?");
         return (TeachingHandler) _context.getAttribute(HANDLER_KEY);
     }
 
