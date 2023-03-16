@@ -4,12 +4,15 @@ import java.time.LocalDateTime;
 
 import javafx.util.Pair;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 public class EditRepetitionRequest {
+  @Getter @Setter
+  private String ID;
 
-  public String ID;
-  public String note;
+  @Getter @Setter
+  private String note;
 
   public Pair<Boolean, String> IsValid() {
     if (ID == null || ID.isEmpty())

@@ -85,25 +85,19 @@ public class CourseController extends HttpServlet {
 
     }
 
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!processRequest(req, resp)) return;
 
         try {
+            var courseID = req.getParameter("id");
             var courseHandler = CourseHandler.getInstance();
-            EditCourseRequest request = JsonHelper.FromJsonRequest(req, EditCourseRequest.class);
-            var valid = request.IsValid();
-            if (!valid.getKey()) {
-                ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());
-                return;
-            }
-            courseHandler.UpdateCourse(request);
-            resp.setStatus(200);
+            courseHandler.DeleteCourse(courseID);
+            ResponseHelper.ReturnOk(resp);
         } catch (CourseNotFoundException e) {
             ResponseHelper.ReturnErrorStatus(resp, 404, e.getMessage());
         } catch (Exception e) {
             ResponseHelper.ReturnErrorStatus(resp, 500, e.getMessage());
         }
-
     }
 
     protected boolean processRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -120,8 +114,8 @@ public class CourseController extends HttpServlet {
                         case "POST":
                             feature = COURSE_ADD;
                             break;
-                        case "PUT":
-                            feature = COURSE_UPDATE;
+                        case "DELETE":
+                            feature = COURSE_DELETE;
                             break;
                     }
                     if (!userHandler.IsAuthorized(feature, req.getSession()))

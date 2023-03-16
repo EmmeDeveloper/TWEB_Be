@@ -86,6 +86,8 @@ public class ProfessorHandler implements IProfessorHandler {
 		repetitionHandler.CancelRepetitionsOfProfessor(ID);
 	}
 
+
+
 	@Override
 	public List<Professor> GetProfessorsByIDs(List<String> ids) throws Exception {
 		if (ids == null || ids.isEmpty())

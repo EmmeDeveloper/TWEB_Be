@@ -16,7 +16,7 @@ public class DAOProfessor extends DAOBase {
   private static final String GET_PROFESSOR_BY_ID_QUERY = "SELECT * FROM professors WHERE ID = '?' AND deleted = FALSE LIMIT 1";
 
   private static final String GET_PROFESSORS_BY_IDS_QUERY = "SELECT * FROM professors WHERE ID IN (?) AND deleted = FALSE";
-  private static final String DELETE_PROFESSOR_QUERY = "UPDATE professors SET deleted = TRUE WHERE ID = '?'";
+  private static final String SOFT_DELETE_PROFESSOR_QUERY = "UPDATE professors SET deleted = TRUE WHERE ID = '?'";
 
   public DAOProfessor() {
     super();
@@ -108,7 +108,7 @@ public class DAOProfessor extends DAOBase {
 
   public boolean DeleteProfessor(String ID) throws Exception {
     int editedRows = super.executeUpdateQuery(
-            DELETE_PROFESSOR_QUERY, ID
+            SOFT_DELETE_PROFESSOR_QUERY, ID
     );
     return editedRows > 0;
   }

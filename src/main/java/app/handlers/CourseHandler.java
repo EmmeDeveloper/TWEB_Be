@@ -5,11 +5,9 @@ import app.exceptions.CourseAlreadyExistsException;
 import app.exceptions.CourseNotFoundException;
 import app.models.courses.AddCourseRequest;
 import app.models.courses.Course;
-import app.models.courses.EditCourseRequest;
 import lombok.var;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +17,6 @@ interface ICourseHandler {
     List<Course> GetAllCourses() throws Exception;
 
     void DeleteCourse(String ID) throws Exception;
-    void UpdateCourse(EditCourseRequest request) throws Exception;
 
     Course GetCourseByID(String ID) throws Exception;
 }
@@ -83,15 +80,6 @@ public class CourseHandler implements ICourseHandler {
 
         var repetitionHandler = RepetitionHandler.getInstance();
         repetitionHandler.CancelRepetitionsOfCourse(ID);
-    }
-
-    public void UpdateCourse(EditCourseRequest request) throws Exception {
-        var course = _dao.GetCourseByID(request.getID());
-        if (course == null) {
-            throw new CourseNotFoundException("Course not found");
-        }
-        var res = _dao.UpdateCourse(request.getID(), request.getName());
-        if (!res) throw new Exception("Cannot update course: Unhandled error ");
     }
 
     @Override

@@ -38,6 +38,10 @@ public class DAORepetition extends DAOBase {
           "SET status = '?', note = '?'\n" +
           "WHERE IDProfessor = '?';";
 
+  public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_AND_COURSE_ID_QUERY = "UPDATE repetitions\n" +
+          "SET status = '?', note = '?'\n" +
+          "WHERE IDProfessor = '?' AND IDCourse = '?';";
+
   public static final String ADD_REPETITION_QUERY =
           "INSERT INTO repetitions (ID, IDUser, IDCourse, IDProfessor, date, time, status, note)\n" +
           "VALUES ('ID', '?', '?', '?', '?', '?', '?', '?');";
@@ -99,6 +103,12 @@ public class DAORepetition extends DAOBase {
     ) > 0;
   }
 
+  public boolean SetRepetitionsStatusAndNoteByProfessorIDAndCourseID(String professorId, String courseId, String status, String note) {
+    return super.executeUpdateQuery(
+            SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_AND_COURSE_ID_QUERY, status, note, professorId, courseId
+    ) > 0;
+  }
+
   public boolean AddRepetition(Repetition repetition) throws Exception {
     return super.executeUpdateQuery(
             ADD_REPETITION_QUERY,
@@ -141,6 +151,4 @@ public class DAORepetition extends DAOBase {
     }
     return null;
   }
-
-
 }

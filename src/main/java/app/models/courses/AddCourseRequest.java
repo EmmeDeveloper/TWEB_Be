@@ -2,10 +2,13 @@ package app.models.courses;
 
 import javafx.util.Pair;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
-@Data
 public class AddCourseRequest {
+    @Getter
+    @Setter
     @NonNull private String Name;
 
     public Pair<Boolean, String> IsValid() {

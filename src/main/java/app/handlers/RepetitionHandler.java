@@ -33,6 +33,8 @@ interface IRepetitionHandler {
   void UpdateRepetition(String id, String status, String note) throws Exception;
 
   void DeleteRepetition(String id) throws Exception;
+
+  void CancelRepetitionsOfProfessorForCourse(String professorId, String courseId);
 }
 
 public class RepetitionHandler implements IRepetitionHandler {
@@ -200,6 +202,20 @@ public class RepetitionHandler implements IRepetitionHandler {
     if (professorId == null || professorId.isEmpty())
       return;
     _dao.SetRepetitionsStatusAndNoteByProfessorID(professorId, Constants.RepetitionStatus.DELETED, "Ripetizione annullata per cancellazione professore");
+  }
+
+  @Override
+  public void CancelRepetitionsOfProfessorForCourse(String professorId, String courseId) {
+    if (professorId == null || professorId.isEmpty())
+      return;
+    if (courseId == null || courseId.isEmpty())
+      return;
+    _dao.SetRepetitionsStatusAndNoteByProfessorIDAndCourseID(
+            professorId,
+            courseId,
+            Constants.RepetitionStatus.DELETED,
+            "Ripetizione annullata per rimozione professore dal corso"
+    );
   }
 
   @Override

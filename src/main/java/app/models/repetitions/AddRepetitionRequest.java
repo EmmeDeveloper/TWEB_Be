@@ -2,17 +2,25 @@ package app.models.repetitions;
 
 import javafx.util.Pair;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Data
 public class AddRepetitionRequest {
+  @Getter @Setter
   private String IDUser;
+  @Getter @Setter
   private String IDCourse;
+  @Getter @Setter
   private String IDProfessor;
+  @Getter @Setter
   private LocalDate date;
+
+  @Getter @Setter
   private String note;
+  @Getter @Setter
   private int time;
 
     public Pair<Boolean, String> IsValid() {

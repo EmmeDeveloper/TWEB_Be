@@ -162,15 +162,19 @@ public class UserHandler implements IUserHandler {
         /// ** Course **
         map.put(COURSE_ADD, new String[] {ADMIN});
         map.put(COURSE_DELETE, new String[] {ADMIN});
-        map.put(COURSE_UPDATE, new String[] {ADMIN});
         map.put(COURSE_GET_PROFESSORS, new String[] {GUEST, USER, ADMIN});
         map.put(COURSE_GET_ALL, new String[] {GUEST, USER, ADMIN});
 
         // ** Professors **
         map.put(PROFESSOR_ADD, new String[] {ADMIN});
-        map.put(PROFESSOR_ADD_COURSE, new String[] {ADMIN});
+        map.put(PROFESSOR_DELETE, new String[] {ADMIN});
+        map.put(PROFESSOR_GET_ALL, new String[] {GUEST, USER, ADMIN});
+
+        map.put(TEACHING_DELETE, new String[] {ADMIN});
+        map.put(TEACHING_ADD, new String[] {ADMIN});
 
         return map;
+
     }
 
     private static User GetDefaultUser() {
