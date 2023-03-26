@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 
 public class AddRepetitionRequest {
   @Getter @Setter
-  private String IDUser;
-  @Getter @Setter
   private String IDCourse;
   @Getter @Setter
   private String IDProfessor;
@@ -24,9 +22,6 @@ public class AddRepetitionRequest {
   private int time;
 
     public Pair<Boolean, String> IsValid() {
-      if (IDUser == null || IDUser.isEmpty())
-        return new Pair<>(false, "IDUser cannot be null or empty");
-
       if (IDCourse == null || IDCourse.isEmpty())
         return new Pair<>(false, "IDCourse cannot be null or empty");
 

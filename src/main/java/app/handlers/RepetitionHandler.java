@@ -29,8 +29,8 @@ interface IRepetitionHandler {
   GetRepetitionsResponse GetRepetitionsForAllUsers(Date from, Date to) throws Exception;
   void CancelRepetitionsOfCourse(String courseId) throws Exception;
   void CancelRepetitionsOfProfessor(String professorId) throws Exception;
-  Repetition AddRepetition(AddRepetitionRequest request) throws Exception;
-  void UpdateRepetition(String id, String status, String note) throws Exception;
+  Repetition AddRepetition(User currentUser, AddRepetitionRequest request) throws Exception;
+  void UpdateRepetition(User currentUser, String id, String status, String note) throws Exception;
 
   void DeleteRepetition(String id) throws Exception;
 
@@ -136,7 +136,7 @@ public class RepetitionHandler implements IRepetitionHandler {
 
     var user = UserHandler
             .getInstance()
-            .GetUsersByIDs(new ArrayList<String>() {{ add(userId); }})
+            .GetUsersByIDs(Collections.singletonList(userId))
             .get(0);
 
     if (user == null)
@@ -219,11 +219,12 @@ public class RepetitionHandler implements IRepetitionHandler {
   }
 
   @Override
-  public Repetition AddRepetition(AddRepetitionRequest request) throws Exception {
-    var user = UserHandler.getInstance().GetUsersByIDs(new ArrayList<String>() {{ add(request.getIDUser()); }});
+  public Repetition AddRepetition(User currentUser, AddRepetitionRequest request) throws Exception {
+    var user = UserHandler.getInstance().GetUsersByIDs(Collections.singletonList(currentUser.getId()));
     if (user == null || user.isEmpty())
       throw new UserNotFoundException("User not found");
-    var professor = ProfessorHandler.getInstance().GetProfessorsByIDs(new ArrayList<String>() {{ add(request.getIDProfessor()); }});
+
+    var professor = ProfessorHandler.getInstance().GetProfessorsByIDs(Collections.singletonList(request.getIDProfessor()));
     if (professor == null || professor.isEmpty())
       throw new ProfessorNotFoundException("Professor not found");
 
@@ -231,9 +232,22 @@ public class RepetitionHandler implements IRepetitionHandler {
     if (course == null)
       throw new CourseNotFoundException("Course not found");
 
+    var teaching = TeachingHandler.getInstance().ExistsTeaching(request.getIDCourse(), request.getIDProfessor());
+    if (!teaching)
+      throw new Exception("Cannot add repetition: Professor is not teaching this course");
+
+    var alreadyExists = _dao.ExistsRepetitionByDateAndTimeAndCourseID(
+            request.getDate(),
+            request.getTime(),
+            request.getIDCourse()
+    );
+
+    if (alreadyExists)
+      throw new Exception("Cannot add repetition: Repetition already exists for this course and date/time");
+
     var repetition = new Repetition(
             UUID.randomUUID().toString(),
-            request.getIDUser(),
+            currentUser.getId(),
             request.getIDCourse(),
             request.getIDProfessor(),
             request.getDate(),
@@ -250,13 +264,16 @@ public class RepetitionHandler implements IRepetitionHandler {
   }
 
   @Override
-  public void UpdateRepetition(String id, String status, String note) throws Exception {
+  public void UpdateRepetition(User currentUser, String id, String status, String note) throws Exception {
     if (id == null || id.isEmpty())
       throw new Exception("Cannot update repetition: ID is null or empty");
 
     var repetition = _dao.GetRepetitionByID(id);
     if (repetition == null)
       throw new Exception("Cannot update repetition: Repetition not found");
+
+    if (!repetition.getIDUser().equals(currentUser.getId()) && !currentUser.IsAdmin())
+      throw new Exception("Cannot update repetition: User is not the owner of this repetition");
 
     if (status == null || status.isEmpty())
       status = Constants.RepetitionStatus.PENDING; // Default value
@@ -297,8 +314,11 @@ public class RepetitionHandler implements IRepetitionHandler {
     fullRepetition.setDate(repetition.getDate());
     fullRepetition.setTime(repetition.getTime());
 
-    if (user != null) {
+
+    if (repetition.getStatus() == Constants.RepetitionStatus.DELETED || user != null)
       fullRepetition.setStatus(repetition.getStatus());
+
+    if (user != null) {
       fullRepetition.setNote(repetition.getNote());
       fullRepetition.setUser(user);
     }

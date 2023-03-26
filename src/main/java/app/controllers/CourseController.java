@@ -123,6 +123,9 @@ public class CourseController extends HttpServlet {
                     break;
 
                 case "/courses/professors":
+                    if (!req.getMethod().equals("GET"))
+                        throw new NotAuthorizedException("Not authorized");
+
                     if (!userHandler.IsAuthorized(COURSE_GET_PROFESSORS, req.getSession()))
                         throw new NotAuthorizedException("Not authorized");
                     break;

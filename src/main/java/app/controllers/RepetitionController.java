@@ -90,7 +90,9 @@ public class RepetitionController extends HttpServlet {
         ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());
         return;
       }
-      var repetition = RepetitionHandler.getInstance().AddRepetition(request);
+
+      var currentUser = UserHandler.getInstance().GetCurrentUser(req.getSession());
+      var repetition = RepetitionHandler.getInstance().AddRepetition(currentUser, request);
       ResponseHelper.ReturnOk(resp, repetition);
     } catch (Exception e) {
       e.printStackTrace();
@@ -108,7 +110,10 @@ public class RepetitionController extends HttpServlet {
         ResponseHelper.ReturnErrorStatus(resp, 401, valid.getValue());
         return;
       }
+
+      var currentUser = UserHandler.getInstance().GetCurrentUser(req.getSession());
       RepetitionHandler.getInstance().UpdateRepetition(
+              currentUser,
               request.getID(),
               req.getParameter("status"),
               request.getNote()
@@ -150,6 +155,7 @@ public class RepetitionController extends HttpServlet {
               feature = REPETITIONS_GET_FOR_ALL_USERS;
               break;
           }
+          break;
         case "POST":
           if (path.equals("/repetitions"))
             feature = REPETITIONS_RESERVE;

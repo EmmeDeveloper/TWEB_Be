@@ -68,7 +68,7 @@ public class ProfessorController extends HttpServlet {
     try {
       switch (req.getServletPath()) {
         case "/professors":
-          var profId = req.getParameter("professorId");
+          var profId = req.getParameter("id");
           if (profId == null) {
             ResponseHelper.ReturnErrorStatus(resp, 400, "Invalid parameters");
             return;
@@ -100,7 +100,8 @@ public class ProfessorController extends HttpServlet {
       String feature = "";
       switch (req.getMethod()) {
         case "GET":
-          feature = PROFESSOR_GET_ALL;
+          if (req.getServletPath().equals("/professors"))
+            feature = PROFESSOR_GET_ALL;
           break;
         case "POST":
           switch (req.getServletPath()) {

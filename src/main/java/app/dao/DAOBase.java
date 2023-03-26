@@ -51,12 +51,14 @@ public class DAOBase {
 
     public CachedRowSet executeQuery(String query, Object... args) throws IllegalArgumentException {
         checkParametersCount(query, args);
+        query = replaceInPlaceholder(query, args);
         startConnection();
         try (PreparedStatement stmt = _connection.prepareStatement(query)) {
             // Set parameters
             for (int i = 0; i < args.length; i++) {
                 stmt.setObject(i + 1, args[i]);
             }
+            System.out.println(stmt.toString());
             try (ResultSet rs = stmt.executeQuery()) {
                 CachedRowSet crs = RowSetProvider.newFactory().createCachedRowSet();
                 crs.populate(rs);
@@ -77,12 +79,14 @@ public class DAOBase {
 
     public int executeUpdateQuery(String query, Object... args) {
         checkParametersCount(query, args);
+        query = replaceInPlaceholder(query, args);
         startConnection();
         try (PreparedStatement stmt = _connection.prepareStatement(query)) {
             // Set parameters
             for (int i = 0; i < args.length; i++) {
                 stmt.setObject(i + 1, args[i]);
             }
+            System.out.println(stmt.toString());
             return stmt.executeUpdate();
         } catch (SQLException exc) {
             System.out.println(exc.getMessage());
@@ -97,10 +101,23 @@ public class DAOBase {
     }
 
     private static void checkParametersCount(String query, Object... params) throws IllegalArgumentException {
+        if (query.contains("(?)")) {
+            return;
+        }
         var placeholderCount = query.chars().filter(ch -> ch == '?').count();
         if (placeholderCount != params.length) {
             throw new IllegalArgumentException("The number of placeholders in the query does not match the number of parameters");
         }
     }
 
+    private static String replaceInPlaceholder(String query, Object... params) {
+        // Substitute (?) placeholder with ? as number of params
+        var parameterOutsideIn = query.replace("(?)","").chars().filter(ch -> ch == '?').count();
+        var newPlaceholder = new StringBuilder();
+        for (int i = 0; i < (params.length - parameterOutsideIn) - 1; i++) {
+            newPlaceholder.append("?,");
+        }
+        newPlaceholder.append("?");
+        return query.replace("'", "").replace("(?)", "(" + newPlaceholder + ")");
+    }
 }

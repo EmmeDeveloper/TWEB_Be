@@ -10,40 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Terminato BE">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controllers/ProfessorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/AddProfessorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/models/professors/GetAllProfessorsResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/libraries/mysql_connector_java_5_1_44_bin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/jdbc_es1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/src/dao/Corso.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/src/dao/DAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/src/dao/Docente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/src/dao/Prenotazione.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jdbc_es1/src/dao/Utente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/commons/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/ProfessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/ProfessorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/RepetitionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/RepetitionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAORepetition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAORepetition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/CourseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/ProfessorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/ProfessorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/RepetitionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/RepetitionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/courses/AddCourseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/courses/AddCourseRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/courses/EditCourseRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/models/repetitions/AddRepetitionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/repetitions/AddRepetitionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/repetitions/EditRepetitionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/repetitions/EditRepetitionRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,6 +244,9 @@
       <workItem from="1678300182014" duration="10758000" />
       <workItem from="1678871571117" duration="599000" />
       <workItem from="1678994795047" duration="4186000" />
+      <workItem from="1679407046011" duration="6864000" />
+      <workItem from="1679522825799" duration="2967000" />
+      <workItem from="1679683366288" duration="24994000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -390,5 +375,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.Optional" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

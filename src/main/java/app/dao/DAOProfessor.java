@@ -36,13 +36,7 @@ public class DAOProfessor extends DAOBase {
   }
 
   public List<Professor> GetProfessorsByIDs(List<String> ids) throws Exception {
-    var formattedIds = ids
-            .stream()
-            .map(id -> "'" + id + "'")
-            .collect(Collectors.toList());
-    String IDs = "(" + String.join(",", formattedIds) + ")";
-
-    return GetProfessors(GET_PROFESSORS_BY_IDS_QUERY, IDs);
+    return GetProfessors(GET_PROFESSORS_BY_IDS_QUERY, ids.toArray());
   }
 
   private Professor GetProfessor(String query, Object... args) throws Exception {

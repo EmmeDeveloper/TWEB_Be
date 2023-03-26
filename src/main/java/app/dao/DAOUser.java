@@ -33,13 +33,7 @@ public class DAOUser extends DAOBase {
     }
 
     public ArrayList<User> GetUsersByIDs(List<String> ids) throws Exception {
-        var formattedIds = ids
-                .stream()
-                .map(id -> "'" + id + "'")
-                .collect(Collectors.toList());
-        String IDs = "(" + String.join(",", ids) + ")";
-
-        return GetUsers(GET_USERS_BY_IDS_QUERY, IDs);
+        return GetUsers(GET_USERS_BY_IDS_QUERY, ids.toArray());
     }
 
     private ArrayList<User> GetUsers(String query, Object... args) throws Exception {

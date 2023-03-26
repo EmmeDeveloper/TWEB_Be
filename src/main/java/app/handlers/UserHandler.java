@@ -130,6 +130,8 @@ public class UserHandler implements IUserHandler {
     }
 
     public User GetCurrentUser(HttpSession session) {
+        if (session.getAttribute(USER_ATTRIBUTE) == null)
+            return GetDefaultUser();
         return (User)session.getAttribute(USER_ATTRIBUTE);
     }
 

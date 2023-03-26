@@ -15,6 +15,7 @@ interface ITeachingHandler {
     void DeleteTeachingsOfProfessor(String professorID) throws Exception;
     void DeleteTeachingsOfCourse(String courseID) throws Exception;
     void AddTeaching(String professorID, String courseID) throws Exception;
+    boolean ExistsTeaching(String courseID, String professorID) throws Exception;
 }
 
 public class TeachingHandler implements ITeachingHandler {
@@ -76,14 +77,27 @@ public class TeachingHandler implements ITeachingHandler {
         if (courseID == null || courseID.isEmpty())
             return;
 
-        var professor = ProfessorHandler.getInstance().GetProfessorsByIDs(new ArrayList<String>() {{ add(professorID); }});
+        var ids = new ArrayList<>(Collections.singletonList(professorID));
+        var professor = ProfessorHandler.getInstance().GetProfessorsByIDs(ids);
         if (professor == null || professor.isEmpty())
             throw new ProfessorNotFoundException("Professor not found");
         var course = CourseHandler.getInstance().GetCourseByID(courseID);
         if (course == null)
             throw new CourseNotFoundException("Course not found");
 
+        if (_dao.ExistsTeaching(courseID, professorID))
+            return;
+
         _dao.AddTeaching(UUID.randomUUID().toString(),professorID, courseID);
+    }
+
+    @Override
+    public boolean ExistsTeaching(String courseID, String professorID) throws Exception {
+        if (professorID == null || professorID.isEmpty())
+            return false;
+        if (courseID == null || courseID.isEmpty())
+            return false;
+        return _dao.ExistsTeaching(courseID, professorID);
     }
 
 
