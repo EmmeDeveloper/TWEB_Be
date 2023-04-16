@@ -1,0 +1,18 @@
+
+  version: "3.9" #version of docker-compose
+  services:
+    mysql:
+      container_name: mysql
+      image: mysql
+      ports:
+      - "3307:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=admin1                    #default password of the MySQL container
+      volumes:
+        - ./data:/var/lib/mysql                         #database data volume
+        - ./src/main/db:/docker-entrypoint-initdb.d  #database files called when the container is built and started for the first time
+    web:
+      container_name: tomcat
+      build: .
+      ports:
+        - "8080:8080"

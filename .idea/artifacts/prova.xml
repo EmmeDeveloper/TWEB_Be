@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="prova">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="prova.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Project30" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.44" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.15" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.14.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.14.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.14.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1" />
+          <element id="library" level="project" name="Maven: org.openjfx:javafx-base:11" />
+          <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:11" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Project30/web/Web" />
+    </root>
+  </artifact>
+</component>

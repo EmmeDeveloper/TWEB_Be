@@ -2,11 +2,9 @@ package app.models.users;
 
 import app.commons.Constants;
 import javafx.util.Pair;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import lombok.var;
 
 public class AddUserRequest {
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Project30:war" />
+      <artifact name="prova" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,22 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="853905b3-3258-4e7f-8ace-3540da113082" name="Changes" comment="Terminato BE">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/prova.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/ProfessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/ProfessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/RepetitionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/RepetitionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOProfessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAORepetition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAORepetition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOTeaching.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/RepetitionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/RepetitionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/TeachingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/helpers/JsonHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/repetitions/AddRepetitionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/repetitions/AddRepetitionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/models/users/AddUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project30/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project30/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project30/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +35,7 @@
         <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -52,8 +50,8 @@
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -70,22 +68,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Unito/Terzo anno/Prog3/Jmail&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Unito/Terzo anno/TWEB/Project30/src/main/webapp",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Docker"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="app.models.professors" />
@@ -100,8 +98,9 @@
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.54">
     <configuration name="Tomcat 9.0.54" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.54" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_211\jre" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Project30/" />
       <option name="START_JAVASCRIPT_DEBUGGER" value="true" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -194,6 +193,146 @@
         </option>
       </method>
     </configuration>
+    <configuration name="Tomcat prova" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.54" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_211\jre">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Project30" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="prova">
+          <settings>
+            <option name="CONTEXT_PATH" value="/prova" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="5a63789e-5d87-4c76-ab2e-7988c16d58cb" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51236" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="prova" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="Docker Image" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="tomcat:latest" />
+          <option name="containerName" value="prova" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+              <DockerPortBindingImpl />
+            </list>
+          </option>
+          <option name="volumeBindings">
+            <list>
+              <DockerVolumeBindingImpl>
+                <option name="containerPath" value="/usr/local/tomcat/webapps" />
+                <option name="hostPath" value="C:\Unito\Terzo anno\TWEB\Project30\target\" />
+              </DockerVolumeBindingImpl>
+            </list>
+          </option>
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="Dockerfile build" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="maven3.6.3_build" />
+          <option name="buildCliOptions" value="--target build" />
+          <option name="buildKitEnabled" value="true" />
+          <option name="buildOnly" value="true" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Dockerfile build" />
+      <item itemvalue="Docker.Docker Image" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.54" />
+      <item itemvalue="Tomcat Server.Tomcat prova" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.Dockerfile build" />
+        <item itemvalue="Docker.Dockerfile build" />
+        <item itemvalue="Docker.Docker Image" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -247,6 +386,10 @@
       <workItem from="1679407046011" duration="6864000" />
       <workItem from="1679522825799" duration="2967000" />
       <workItem from="1679683366288" duration="24994000" />
+      <workItem from="1680346202169" duration="4655000" />
+      <workItem from="1680356365962" duration="5018000" />
+      <workItem from="1680642072422" duration="651000" />
+      <workItem from="1680731313605" duration="24673000" />
     </task>
     <task id="LOCAL-00001" summary="First setup commit">
       <created>1666959108234</created>
@@ -372,6 +515,26 @@
           <url>file://$PROJECT_DIR$/src/main/java/app/handlers/UserHandler.java</url>
           <line>114</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/controllers/RepetitionController.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/controllers/RepetitionController.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/controllers/UserController.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/app/controllers/MainController.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
