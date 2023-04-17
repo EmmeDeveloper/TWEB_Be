@@ -16,7 +16,8 @@ public class DAOBase {
 
     public DAOBase() {}
     private Connection _connection;
-    private static final String url = "jdbc:mysql://localhost:3306/ripetizioni";
+    private static final String url = "jdbc:mysql://db:3306/ripetizioni?useSSL=false";
+//    private static final String url = "jdbc:mysql://localhost:3306/ripetizioni?autoReconnect=true&useSSL=false";
 
     private static void registerDriver() {
         try {

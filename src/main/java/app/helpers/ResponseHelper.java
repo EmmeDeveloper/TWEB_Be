@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 public class ResponseHelper {
 
     public static void ReturnErrorStatus(HttpServletResponse response, int httpStatus, String errorMessage) throws IOException {
-        var error = new ErrorMessage(errorMessage);
+        var     error = new ErrorMessage(errorMessage);
         response.setContentType("text/json");
         response.setStatus(httpStatus);
         PrintWriter out = response.getWriter();
