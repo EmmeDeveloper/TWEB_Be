@@ -30,7 +30,7 @@ public class DAOBase {
 
     private void startConnection() {
         try {
-            _connection = DriverManager.getConnection(url, "root", "");
+            _connection = DriverManager.getConnection(url, "admin", "admin1");
             if(_connection != null) {
                 System.out.println("Connected to the database");
             }
