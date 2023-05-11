@@ -18,7 +18,8 @@ public class DAOTeaching extends DAOBase {
             "FROM teachings\n" +
             "INNER JOIN courses ON teachings.IDCourse = courses.ID\n" +
             "INNER JOIN professors ON teachings.IDProfessor = professors.ID\n" +
-            "WHERE courses.ID IN (?)";
+            "WHERE courses.ID IN (?)" + 
+            "ORDER BY courses.ID ASC, professors.ID ASC";
     private static final String DELETE_TEACHING_BY_COURSE_ID_QUERY = "DELETE FROM teachings WHERE IDCourse = '?'";
     private static final String DELETE_TEACHING_BY_PROFESSOR_ID_QUERY = "DELETE FROM teachings WHERE IDProfessor = '?'";
     private static final String ADD_TEACHING_QUERY = "INSERT INTO teachings (ID, IDCourse, IDProfessor) VALUES ('?','?', '?')";
