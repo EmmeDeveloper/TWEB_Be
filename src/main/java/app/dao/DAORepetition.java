@@ -19,7 +19,8 @@ public class DAORepetition extends DAOBase {
           "JOIN professors ON repetitions.IDProfessor = professors.ID\n" +
           "JOIN users ON repetitions.IDUser = users.ID\n" +
           "WHERE courses.ID IN (?)\n" +
-          "AND repetitions.date BETWEEN '?' AND '?'\n";
+          "AND repetitions.date BETWEEN '?' AND '?'\n" +
+          "ORDER BY repetitions.date ASC, repetitions.time ASC";
 
   public static final String GET_REPETITIONS_BY_USER_ID_QUERY = "SELECT repetitions.*\n" +
           "FROM repetitions\n" +
@@ -27,7 +28,8 @@ public class DAORepetition extends DAOBase {
           "JOIN professors ON repetitions.IDProfessor = professors.ID\n" +
           "JOIN users ON repetitions.IDUser = users.ID\n" +
           "WHERE users.ID = '?'" +
-          "AND repetitions.date BETWEEN '?' AND '?'\n";
+          "AND repetitions.date BETWEEN '?' AND '?'\n" +
+          "ORDER BY repetitions.date ASC, repetitions.time ASC";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
