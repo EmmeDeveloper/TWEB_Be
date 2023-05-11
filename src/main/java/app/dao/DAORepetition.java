@@ -37,11 +37,11 @@ public class DAORepetition extends DAOBase {
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_COURSE_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDCourse = '?'  AND status = 'pending';";
+          "WHERE IDCourse = '?' AND status = 'pending';";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDProfessor = '? 'pending'';";
+          "WHERE IDProfessor = '?' AND status = 'pending';";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_AND_COURSE_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
@@ -54,7 +54,7 @@ public class DAORepetition extends DAOBase {
   public static final String GET_REPETITION_BY_ID_QUERY = "SELECT * FROM repetitions WHERE ID = '?' LIMIT 1";
 
   public static final String EXISTS_REPETITION_BY_DATE_AND_TIME_AND_COURSE_ID_QUERY =
-          "SELECT * FROM repetitions WHERE date = '?' AND time = '?' AND IDCourse = '?' AND status != deleted LIMIT 1;";
+          "SELECT * FROM repetitions WHERE date = '?' AND time = '?' AND IDCourse = '?' AND status != 'deleted' LIMIT 1;";
 
   public DAORepetition() {
     super();
