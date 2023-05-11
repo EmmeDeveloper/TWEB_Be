@@ -11,8 +11,8 @@ public class DAOProfessor extends DAOBase {
 
   private static final String INSERT_PROFESSOR_QUERY = "INSERT INTO professors (ID, name, surname) VALUES ('?','?','?')";
   private static final String GET_ALL_PROFESSORS_QUERY = "SELECT * FROM professors WHERE deleted = FALSE ORDER BY surname,name ASC";
-  private static final String GET_PROFESSORS_BY_TEXT_QUERY = "SELECT * FROM professors WHERE (name LIKE '%?%' OR surname LIKE '%?%') AND deleted = FALSE";
-  private static final String GET_PROFESSORS_BY_FULL_NAME_QUERY = "SELECT * FROM professors WHERE name = '?' AND surname = '?' AND deleted = FALSE";
+  private static final String GET_PROFESSORS_BY_TEXT_QUERY = "SELECT * FROM professors WHERE (name LIKE '%?%' OR surname LIKE '%?%') AND deleted = FALSE ORDER BY surname,name ASC";
+  private static final String GET_PROFESSORS_BY_FULL_NAME_QUERY = "SELECT * FROM professors WHERE name = '?' AND surname = '?' AND deleted = FALSE ORDER BY surname,name ASC";
   private static final String GET_PROFESSOR_BY_ID_QUERY = "SELECT * FROM professors WHERE ID = '?' AND deleted = FALSE LIMIT 1";
 
   private static final String GET_PROFESSORS_BY_IDS_QUERY = "SELECT * FROM professors WHERE ID IN (?) AND deleted = FALSE";

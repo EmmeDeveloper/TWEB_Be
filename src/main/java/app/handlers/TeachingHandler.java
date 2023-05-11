@@ -88,7 +88,7 @@ public class TeachingHandler implements ITeachingHandler {
         if (_dao.ExistsTeaching(courseID, professorID))
             return;
 
-        _dao.AddTeaching(UUID.randomUUID().toString(),professorID, courseID);
+        _dao.AddTeaching(UUID.randomUUID().toString(),courseID, professorID);
     }
 
     @Override
