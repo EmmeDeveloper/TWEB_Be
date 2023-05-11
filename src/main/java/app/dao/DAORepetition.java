@@ -37,11 +37,11 @@ public class DAORepetition extends DAOBase {
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_COURSE_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDCourse = '?'  AND status = 'pending';";
+          "WHERE IDCourse = '?' AND status = 'pending';";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDProfessor = '? 'pending'';";
+          "WHERE IDProfessor = '?' AND status = 'pending';";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_AND_COURSE_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
