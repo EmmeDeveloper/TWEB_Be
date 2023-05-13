@@ -80,6 +80,10 @@ public class RepetitionHandler implements IRepetitionHandler {
     var professors = ProfessorHandler.getInstance().GetProfessorsByIDs(professorIds);
     var professorMap = professors.stream().collect(Collectors.toMap(Professor::getID, p -> p));
 
+    // Get all courses
+    var courses = CourseHandler.getInstance().GetAllCourses();
+    var courseMap = courses.stream().collect(Collectors.toMap(Course::getId, c -> c));
+
     if (currentUser.IsAdmin()) {
       // If user is admin, all repetitions should have the user field set
       var userIds = list.stream().map(Repetition::getIDUser).collect(Collectors.toList());
@@ -92,7 +96,9 @@ public class RepetitionHandler implements IRepetitionHandler {
                       .map(r -> GetFullRepetition(
                               r,
                               userMap.get(r.getIDUser()),
-                              professorMap.get(r.getIDProfessor()))
+                              professorMap.get(r.getIDProfessor()),
+                              courseMap.get(r.getIDCourse())
+                              )
                       )
                       .collect(Collectors.toList())
       );
@@ -104,7 +110,9 @@ public class RepetitionHandler implements IRepetitionHandler {
                       .map(r -> GetFullRepetition(
                               r,
                               r.getIDUser().equals(currentUser.getId()) ? currentUser : null,
-                              professorMap.get(r.getIDProfessor()))
+                              professorMap.get(r.getIDProfessor()),
+                              courseMap.get(r.getIDCourse())
+                              )
                       )
                       .collect(Collectors.toList())
       );
@@ -146,13 +154,18 @@ public class RepetitionHandler implements IRepetitionHandler {
     var professors = ProfessorHandler.getInstance().GetProfessorsByIDs(professorIds);
     var professorMap = professors.stream().collect(Collectors.toMap(Professor::getID, p -> p));
 
+    var courses = CourseHandler.getInstance().GetAllCourses();
+    var courseMap = courses.stream().collect(Collectors.toMap(Course::getId, c -> c));
+
     response.setRepetitions(
             list
                     .stream()
                     .map(r -> GetFullRepetition(
                             r,
                             user,
-                            professorMap.get(r.getIDProfessor()))
+                            professorMap.get(r.getIDProfessor()),
+                            courseMap.get(r.getIDCourse())
+                          )
                     )
                     .collect(Collectors.toList())
     );
@@ -164,6 +177,7 @@ public class RepetitionHandler implements IRepetitionHandler {
   public GetRepetitionsResponse GetRepetitionsForAllUsers(Date from, Date to) throws Exception {
     var courses = CourseHandler.getInstance().GetAllCourses();
     var courseIds = courses.stream().map(Course::getId).collect(Collectors.toList());
+    var courseMap = courses.stream().collect(Collectors.toMap(Course::getId, c -> c));
 
     var response = new GetRepetitionsResponse();
     var list = _dao.GetRepetitionsByCourseIds(courseIds, from, to);
@@ -176,13 +190,16 @@ public class RepetitionHandler implements IRepetitionHandler {
     var users = UserHandler.getInstance().GetUsersByIDs(userIds);
     var userMap = users.stream().collect(Collectors.toMap(User::getId, u -> u));
 
+
     response.setRepetitions(
             list
                     .stream()
                     .map(r -> GetFullRepetition(
                             r,
                             userMap.get(r.getIDUser()),
-                            professorMap.get(r.getIDProfessor()))
+                            professorMap.get(r.getIDProfessor()),
+                            courseMap.get(r.getIDCourse())
+                          )
                     )
                     .collect(Collectors.toList())
     );
@@ -307,13 +324,12 @@ public class RepetitionHandler implements IRepetitionHandler {
     _dao.DeleteRepetitionByID(id);
   }
 
-  private GetRepetitionsResponse.FullRepetition GetFullRepetition(Repetition repetition, User user, Professor professor) {
+  private GetRepetitionsResponse.FullRepetition GetFullRepetition(Repetition repetition, User user, Professor professor, Course course) {
     var fullRepetition = new GetRepetitionsResponse.FullRepetition();
     fullRepetition.setID(repetition.getID());
-    fullRepetition.setIDCourse(repetition.getIDCourse());
     fullRepetition.setDate(repetition.getDate());
     fullRepetition.setTime(repetition.getTime());
-
+    fullRepetition.setCourse(course);
 
     if (repetition.getStatus() == Constants.RepetitionStatus.DELETED || user != null)
       fullRepetition.setStatus(repetition.getStatus());
