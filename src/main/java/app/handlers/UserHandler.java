@@ -79,6 +79,9 @@ public class UserHandler implements IUserHandler {
         var currUser = new User(id, request.getRole());
         currUser.setAccount(request.getUsername());
         currUser.setEmail(request.getEmail());
+        currUser.setName(request.getName());
+        currUser.setSurname(request.getSurname());
+        
         session.setAttribute(USER_ATTRIBUTE, currUser);
         return currUser;
     }

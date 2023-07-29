@@ -5,7 +5,6 @@ import lombok.var;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DAOUser extends DAOBase {
 
@@ -47,18 +46,19 @@ public class DAOUser extends DAOBase {
                 );
                 u.setAccount(result.getString("account"));
                 u.setEmail(result.getString("email"));
-                if (result.getString("name") != null)
-                    u.setName(result.getString("name"));
-                if (result.getString("surname") != null)
-                    u.setSurname(result.getString("surname"));
-                if (result.getString("address") != null)
-                    u.setAddress(result.getString("address"));
-                if (result.getString("birthdate") != null)
-                    u.setBirthDate(result.getString("birthdate"));
-                if (result.getString("phone") != null)
-                    u.setPhone(result.getString("phone"));
-                if (result.getString("membersince") != null)
-                    u.setMemberSince(result.getString("membersince"));
+
+                if (result.getString(5) != null)
+                    u.setName(result.getString(5));
+                if (result.getString(6) != null)
+                    u.setSurname(result.getString(6));
+                if (result.getString(11) != null)
+                    u.setAddress(result.getString(11));
+                if (result.getString(8) != null)
+                    u.setBirthDate(result.getString(8));
+                if (result.getString(9) != null)
+                    u.setPhone(result.getString(9));
+                if (result.getString(10) != null)
+                    u.setMemberSince(result.getString(10));
 
                 list.add(u);
             }
