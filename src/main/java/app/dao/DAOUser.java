@@ -47,6 +47,19 @@ public class DAOUser extends DAOBase {
                 );
                 u.setAccount(result.getString("account"));
                 u.setEmail(result.getString("email"));
+                if (result.getString("name") != null)
+                    u.setName(result.getString("name"));
+                if (result.getString("surname") != null)
+                    u.setSurname(result.getString("surname"));
+                if (result.getString("address") != null)
+                    u.setAddress(result.getString("address"));
+                if (result.getString("birthdate") != null)
+                    u.setBirthDate(result.getString("birthdate"));
+                if (result.getString("phone") != null)
+                    u.setPhone(result.getString("phone"));
+                if (result.getString("membersince") != null)
+                    u.setMemberSince(result.getString("membersince"));
+
                 list.add(u);
             }
         }

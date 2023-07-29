@@ -29,3 +29,12 @@
         - "8080:8080"
       links:
         - db
+    
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8085:8080
+      links:
+        - db
+

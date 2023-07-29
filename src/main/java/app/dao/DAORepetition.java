@@ -27,7 +27,7 @@ public class DAORepetition extends DAOBase {
           "JOIN courses ON repetitions.IDCourse = courses.ID\n" +
           "JOIN professors ON repetitions.IDProfessor = professors.ID\n" +
           "JOIN users ON repetitions.IDUser = users.ID\n" +
-          "WHERE users.ID = '?'" +
+          "WHERE users.ID = '?'\n" +
           "AND repetitions.date BETWEEN '?' AND '?'\n" +
           "ORDER BY repetitions.date ASC, repetitions.time ASC";
 
@@ -37,15 +37,15 @@ public class DAORepetition extends DAOBase {
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_COURSE_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDCourse = '?' AND status = 'pending';";
+          "WHERE IDCourse = '?' AND status = \"pending\";";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDProfessor = '?' AND status = 'pending';";
+          "WHERE IDProfessor = '?' AND status = \"pending\";";
 
   public static final String SET_REPETITION_STATUS_AND_NOTE_BY_PROFESSOR_ID_AND_COURSE_ID_QUERY = "UPDATE repetitions\n" +
           "SET status = '?', note = '?'\n" +
-          "WHERE IDProfessor = '?' AND IDCourse = '?'  AND status = 'pending' ;";
+          "WHERE IDProfessor = '?' AND IDCourse = '?'  AND status = \"pending\" ;";
 
   public static final String ADD_REPETITION_QUERY =
           "INSERT INTO repetitions (ID, IDUser, IDCourse, IDProfessor, date, time, status, note)\n" +
@@ -54,7 +54,7 @@ public class DAORepetition extends DAOBase {
   public static final String GET_REPETITION_BY_ID_QUERY = "SELECT * FROM repetitions WHERE ID = '?' LIMIT 1";
 
   public static final String EXISTS_REPETITION_BY_DATE_AND_TIME_AND_COURSE_ID_QUERY =
-          "SELECT * FROM repetitions WHERE date = '?' AND time = '?' AND IDCourse = '?' AND status != 'deleted' LIMIT 1;";
+          "SELECT * FROM repetitions WHERE date = '?' AND time = '?' AND IDCourse = '?' AND status != \"deleted\" LIMIT 1;";
 
   public DAORepetition() {
     super();

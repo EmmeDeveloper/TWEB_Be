@@ -110,6 +110,14 @@ CREATE TABLE `teachings` (
   `IDProfessor` varchar(42) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+INSERT INTO `teachings` (`ID`, `IDCourse`, `IDProfessor`) VALUES
+('846bc5a4-1d5e-409b-8614-93e8b5cceb72',	'a3ed1a1e-c63e-4c7c-b2b0-6ed502877b95',	'06e78908-63ad-4fae-8cda-19492684deb4'),
+('90db23bc-8293-4f85-aaaa-f8966421c1b8',	'a3ed1a1e-c63e-4c7c-b2b0-6ed502877b95',	'4fac96fc-574b-40e6-b4ae-0cd06f107899'),
+('a8103930-3e32-40b9-91d1-d5bb9ada88ef',	'b7e137da-17a1-4641-911f-3490ac0eb92c',	'4fac96fc-574b-40e6-b4ae-0cd06f107899'),
+('c5805e54-3bdd-4535-9c8b-bf64aff5350b',	'd1063521-706a-4d3f-8d36-e0687a9eccea',	'a3b55ac9-c83d-4815-b0df-a2c4deba2979'),
+('f7cf96a2-6e9a-4022-89b1-119c8d53eb1e',	'a3ed1a1e-c63e-4c7c-b2b0-6ed502877b95',	'a3b55ac9-c83d-4815-b0df-a2c4deba2979');
+
 -- --------------------------------------------------------
 
 --
@@ -123,7 +131,10 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `surname` varchar(255) DEFAULT NULL,
-  `role` varchar(255) DEFAULT NULL
+  `role` varchar(255) DEFAULT NULL,
+  `birthdate` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `membersince` varchar(255) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

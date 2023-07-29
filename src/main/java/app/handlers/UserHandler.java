@@ -108,6 +108,7 @@ public class UserHandler implements IUserHandler {
         if (session.getAttribute(USER_ATTRIBUTE) == null)
             return;
         session.removeAttribute(USER_ATTRIBUTE);
+        session.invalidate();
     }
 
     public boolean IsAuthorized(String feature, HttpSession session) {
